@@ -8,7 +8,7 @@ export default function Home() {
       <h1>
         Nyantaro Cloud
       </h1>
-      <div className="container">
+      <div className="flex h-screen">
         <div className="left-scroll">
           <Contents />
         </div>
