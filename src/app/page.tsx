@@ -1,4 +1,5 @@
 import './page.css'
+import { RoundImageButton } from '@/components/RoundImageButton'
 
 export default function Home() {
   return (
@@ -12,9 +13,24 @@ export default function Home() {
             Contents
           </h2>
           <p>
-            blog<br />
-            galley<br />
-            movie
+            <RoundImageButton
+              href="/"
+              src="/globe.svg"
+              alt="blog"
+              size={100}
+            /><br />
+            <RoundImageButton
+              href="/"
+              src="/globe.svg"
+              alt="galley"
+              size={100}
+            /><br />
+            <RoundImageButton
+              href="/"
+              src="/globe.svg"
+              alt="movie"
+              size={100}
+            />
           </p>
         </div>
         <div className="right-fixed">
