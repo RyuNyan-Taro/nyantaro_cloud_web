@@ -17,13 +17,13 @@ export const RoundImageButton: React.FC<Props> = ({
     href,
     src,
     alt,
-    size = 80,
+    size = 300,
     className
 }) => {
     return (
         <Link href={href}
             className={cn(
-                'relative inline-block rounded-full overflow-hidden transition-transform duration-200 hover:scale-105 hover:ring-2 hover:ring-primary',
+                'group relative inline-block rounded-full overflow-hidden transition-transform duration-200 hover:scale-105 hover:ring-2 hover:ring-primary',
                 className
             )}
         style={{ width: size, height: size }}
@@ -33,10 +33,13 @@ export const RoundImageButton: React.FC<Props> = ({
                 alt={alt}
                 width={size}
                 height={size}
+                unoptimized
                 className="object-cover w-full h-full"
             />
             {alt && (
-                <span className="absolute inset-0 flex items-center justify-center text-white text-sm font-semibold bg-black/40">
+                <span className="absolute inset-0 flex items-center justify-center
+                                text-white text-sm font-semibold bg-black/40
+                                opacity-0 group-hover:opacity-100 transition-opacity duration-[1.5s]">
                     {alt}
                 </span>
             )}

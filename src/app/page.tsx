@@ -12,26 +12,23 @@ export default function Home() {
           <h2>
             Contents
           </h2>
-          <p>
+          <div className="flex flex-wrap gap-16 justify-center">
             <RoundImageButton
               href="/"
-              src="/globe.svg"
+              src="/Bull.jpeg"
               alt="blog"
-              size={100}
-            /><br />
-            <RoundImageButton
-              href="/"
-              src="/globe.svg"
-              alt="galley"
-              size={100}
-            /><br />
-            <RoundImageButton
-              href="/"
-              src="/globe.svg"
-              alt="movie"
-              size={100}
             />
-          </p>
+            <RoundImageButton
+              href="/"
+              src="/Clone.jpeg"
+              alt="galley"
+            />
+            <RoundImageButton
+              href="/"
+              src="/Future.jpeg"
+              alt="movie"
+            />
+          </div>
         </div>
         <div className="right-fixed">
           <h2>
