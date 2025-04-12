@@ -1,5 +1,5 @@
 import './page.css'
-import { RoundImageButton } from '@/components/RoundImageButton'
+import Contents from '@/components/Contents';
 
 export default function Home() {
   return (
@@ -9,26 +9,7 @@ export default function Home() {
       </h1>
       <div className="container">
         <div className="left-scroll">
-          <h2>
-            Contents
-          </h2>
-          <div className="flex flex-wrap gap-16 justify-center">
-            <RoundImageButton
-              href="/"
-              src="/Bull.jpeg"
-              alt="blog"
-            />
-            <RoundImageButton
-              href="/"
-              src="/Clone.jpeg"
-              alt="galley"
-            />
-            <RoundImageButton
-              href="/"
-              src="/Future.jpeg"
-              alt="movie"
-            />
-          </div>
+          <Contents />
         </div>
         <div className="right-fixed">
           <h2>
