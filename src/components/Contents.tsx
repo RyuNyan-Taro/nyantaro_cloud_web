@@ -5,7 +5,7 @@ export default function Contents () {
     <div className="bg-[url('/Good_night.jpeg')] bg-cover bg-center">
         <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none" />
             <div className="px-12 pb-12 pt-0">
-                <h2>
+                <h2 className="text-center text-2xl font-bold">
                     Contents
                 </h2>
                 <div className="flex flex-wrap gap-16 justify-center">
