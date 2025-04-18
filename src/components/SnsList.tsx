@@ -11,20 +11,18 @@ export default function SnsList() {
     }, [])
 
     return (
-        <div className="h-full overflow-y-auto p-4 space-y-4">
+        <div className="h-full overflow-y-auto p-4">
             <h2 className="text-2xl font-bold">SNS</h2>
 
-            {/* Twitterタイムライン */}
-            <div className="h-[500px]">
+            {/* Twitterリンク */}
                 <a
-                    className="twitter-timeline"
-                    data-height="500"
                     href="https://twitter.com/Nyantar83781816"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="text-blue-500 underline block"
                 >
-                    Tweets by Nyantar83781816
+                    X
                 </a>
-            </div>
-
             {/* Instagramリンク */}
             <a
                 href="https://www.instagram.com/nyantarotaro/"
