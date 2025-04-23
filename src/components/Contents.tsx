@@ -10,7 +10,7 @@ export default function Contents () {
                 </h2>
                 <div className="flex flex-wrap gap-16 justify-center">
                     <RoundImageButton
-                        href="/"
+                        href="/blog"
                         src="/Bull.jpeg"
                         alt="blog"
                     />
