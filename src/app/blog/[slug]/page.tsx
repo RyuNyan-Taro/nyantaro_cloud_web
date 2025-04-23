@@ -1,9 +1,15 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
+import { BlogPost } from '../../blog/types';
+
+// Extended BlogPost type with content field
+interface DetailedBlogPost extends Omit<BlogPost, 'description' | 'readTime'> {
+  content: string;
+}
 
 // This would typically come from a database or CMS
-const blogPosts = [
+const blogPosts: DetailedBlogPost[] = [
   {
     id: '1',
     title: 'Getting Started with Next.js',
@@ -44,7 +50,7 @@ const blogPosts = [
 // Generate metadata for the page
 export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
   // Await the params object to access its properties
-  const resolvedParams = await Promise.resolve(params);
+  const [resolvedParams] = await Promise.all([Promise.resolve(params)]);
   const post = blogPosts.find((post) => post.slug === resolvedParams.slug);
   
   if (!post) {
@@ -61,7 +67,7 @@ export async function generateMetadata({ params }: { params: { slug: string } })
 
 export default async function BlogPostPage({ params }: { params: { slug: string } }) {
   // Await the params object to access its properties
-  const resolvedParams = await Promise.resolve(params);
+  const [resolvedParams] = await Promise.all([Promise.resolve(params)]);
   const post = blogPosts.find((post) => post.slug === resolvedParams.slug);
   
   if (!post) {
