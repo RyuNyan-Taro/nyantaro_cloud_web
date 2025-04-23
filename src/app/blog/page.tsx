@@ -1,20 +1,11 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
+import { BlogPostList } from './components/BlogPostList';
+import { BlogPost } from './types';
 
 export const metadata: Metadata = {
   title: 'Blog | My Website',
   description: 'Read our latest blog posts and articles',
 };
-
-// Blog post interface
-interface BlogPost {
-  id: string;
-  title: string;
-  description: string;
-  date: string;
-  readTime: string;
-  slug: string;
-}
 
 // Sample blog post data
 const blogPosts: BlogPost[] = [
@@ -70,50 +61,7 @@ export default function BlogPage() {
   return (
     <div className="max-w-4xl mx-auto px-4 py-8">
       <h1 className="text-3xl font-bold mb-8 text-center">Blog Posts</h1>
-      
-      <div className="space-y-8">
-        {blogPosts.map((post) => (
-          <article 
-            key={post.id} 
-            className="border border-gray-200 rounded-lg p-6 hover:shadow-md transition-shadow"
-          >
-            <div className="flex justify-between items-start mb-3">
-              <h2 className="text-xl font-semibold text-blue-600 hover:text-blue-800">
-                <Link href={`/blog/${post.slug}`}>
-                  {post.title}
-                </Link>
-              </h2>
-              <span className="text-sm text-gray-500">{post.readTime}</span>
-            </div>
-            
-            <p className="text-gray-600 mb-4">{post.description}</p>
-            
-            <div className="flex justify-between items-center">
-              <span className="text-sm text-gray-500">{formatDate(post.date)}</span>
-              <Link 
-                href={`/blog/${post.slug}`}
-                className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800"
-              >
-                Read more
-                <svg 
-                  className="w-4 h-4 ml-1" 
-                  fill="none" 
-                  stroke="currentColor" 
-                  viewBox="0 0 24 24" 
-                  xmlns="http://www.w3.org/2000/svg"
-                >
-                  <path 
-                    strokeLinecap="round" 
-                    strokeLinejoin="round" 
-                    strokeWidth="2" 
-                    d="M14 5l7 7m0 0l-7 7m7-7H3"
-                  />
-                </svg>
-              </Link>
-            </div>
-          </article>
-        ))}
-      </div>
+      <BlogPostList posts={blogPosts} formatDate={formatDate} />
     </div>
   );
 }
