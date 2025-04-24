@@ -1,14 +1,13 @@
 import './page.css'
+import Header from "@/components/Header";
 import Contents from '@/components/Contents';
 import SnsList from '@/components/SnsList';
 
 export default function Home() {
   return (
-    <div>
-      <h1>
-        Nyantaro Cloud
-      </h1>
-      <div className="flex h-screen">
+    <div className="main-container">
+        <Header />
+      <div className="content-section">
         <div className="left-scroll">
           <Contents />
         </div>
