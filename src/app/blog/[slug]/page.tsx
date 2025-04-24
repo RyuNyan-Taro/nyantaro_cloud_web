@@ -1,9 +1,7 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 import { notFound } from 'next/navigation';
-import { BlogPost } from '../../blog/types';
+import { BlogPost } from '../types';
 
-// Extended BlogPost type with content field
 interface DetailedBlogPost extends Omit<BlogPost, 'description' | 'readTime'> {
   content: string;
 }
@@ -48,10 +46,12 @@ const blogPosts: DetailedBlogPost[] = [
 ];
 
 // Generate metadata for the page
-export async function generateMetadata({ params }: { params: { slug: string } }): Promise<Metadata> {
-  // Await the params object to access its properties
-  const [resolvedParams] = await Promise.all([Promise.resolve(params)]);
-  const post = blogPosts.find((post) => post.slug === resolvedParams.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
+  // Must await params before accessing properties
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
+
+  const post = blogPosts.find((post) => post.slug === slug);
   
   if (!post) {
     return {
@@ -65,51 +65,28 @@ export async function generateMetadata({ params }: { params: { slug: string } })
   };
 }
 
-export default async function BlogPostPage({ params }: { params: { slug: string } }) {
-  // Await the params object to access its properties
-  const [resolvedParams] = await Promise.all([Promise.resolve(params)]);
-  const post = blogPosts.find((post) => post.slug === resolvedParams.slug);
+type Props = {
+  params: Promise<{
+    slug: string;
+  }>;
+};
+
+export default async function BlogPostPage({ params }: Props) {
+  // Must await params before accessing properties
+  const resolvedParams = await params;
+  const slug = resolvedParams.slug;
   
+  const post = blogPosts.find((post) => post.slug === slug);
+
   if (!post) {
     notFound();
   }
-  
+
   return (
-    <div className="max-w-3xl mx-auto px-4 py-8">
-      <Link 
-        href="/blog"
-        className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800 mb-6"
-      >
-        <svg 
-          className="w-4 h-4 mr-1" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth="2" 
-            d="M10 19l-7-7m0 0l7-7m-7 7h18"
-          />
-        </svg>
-        Back to all posts
-      </Link>
-      
-      <article>
-        <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-        <p className="text-gray-500 mb-8">{new Date(post.date).toLocaleDateString('ja-JP', { 
-          year: 'numeric', 
-          month: 'long', 
-          day: 'numeric' 
-        })}</p>
-        
-        <div className="prose max-w-none">
-          <p>{post.content}</p>
-          <p>This is a placeholder for actual blog content. In a real application, this would include full article content, possibly formatted with Markdown or rich text.</p>
-        </div>
-      </article>
-    </div>
+    <article className="mx-auto max-w-3xl px-4 py-8">
+      <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
+      <p className="text-gray-500 mb-6">{post.date}</p>
+      <div className="prose">{post.content}</div>
+    </article>
   );
 }
