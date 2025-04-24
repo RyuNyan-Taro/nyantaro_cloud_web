@@ -38,7 +38,7 @@ export const RoundImageButton: React.FC<Props> = ({
             />
             {alt && (
                 <span className="absolute inset-0 flex items-center justify-center
-                                text-white text-sm font-semibold bg-black/40
+                                text-white text-xl font-semibold bg-black/40
                                 opacity-0 group-hover:opacity-100 transition-opacity duration-[1.5s]">
                     {alt}
                 </span>
