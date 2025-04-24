@@ -2,8 +2,8 @@ import { RoundImageButton } from '@/components/RoundImageButton'
 
 export default function Contents () {
     return (
-    <div className="bg-[url('/Good_night.jpeg')] bg-cover bg-center">
-        <div className="absolute inset-0 bg-black/40 z-10 pointer-events-none" />
+    <div className="bg-[url('/Good_night.jpeg')] bg-cover bg-center relative min-h-screen">
+        <div className="absolute inset-0 bg-black/40 z-20 pointer-events-none" />
             <div className="px-12 pb-12 pt-0">
                 <h2 className="text-center text-2xl font-bold">
                     Contents
