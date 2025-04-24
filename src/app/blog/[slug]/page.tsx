@@ -11,8 +11,12 @@ const blogPosts: DetailedBlogPost[] = [
   {
     id: '1',
     title: 'Getting Started with Next.js',
-    content: 'This is a sample blog post about getting started with Next.js.',
-    date: '2023-10-15',
+    content: 'とりあえずcodeに直書きでblogを書いてみるけど、もう面倒。blog編集用のconsoleアプリを別で作成して、' +
+        'それもクラウドに保存して、こっちではAPI経由で取得する形にしたいなぁ、、と思っているだけ思っている。いやいや、今の時代色んなブログプラットフォームあるんやから、' +
+        '素直にそちらを使えば良いじゃない、ってそれはもう、そう！異論なし。そうなんだけど、、、なんかさぁ、プラットフォーマーに乗っかるよりも、自分で作る方が楽しいじゃない？面倒だけど。' +
+        'というかやりたくないけど。というかとにかく面倒だけど。ついでにね、実装も学べるじゃない？一石二鳥じゃない？二兎を追うものは一兎をも得ないんじゃないかって？、、確かに。異論なし。' +
+        '今の所は兎を取り逃している、気がしているけど、まぁいいや。',
+    date: '2025-04-24',
     slug: 'getting-started-with-nextjs',
   },
   {
