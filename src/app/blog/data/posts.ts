@@ -57,7 +57,7 @@ export const blogPostsData: (BlogPost & { content: string })[] = [
 export const getBlogPosts = (): BlogPost[] => {
   return blogPostsData.map(({ id, title, description, date, readTime, slug }) => ({
     id, title, description, date, readTime, slug
-  }));
+  })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
 export const getDetailedBlogPosts = (): DetailedBlogPost[] => {
