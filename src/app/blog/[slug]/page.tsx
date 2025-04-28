@@ -1,6 +1,8 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+import ReactMarkdown from 'react-markdown';
 import {blogPostsData} from "@/app/blog/data/posts";
+import remarkGfm from "remark-gfm";
 
 // Generate metadata for the page
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -43,7 +45,21 @@ export default async function BlogPostPage({ params }: Props) {
     <article className="mx-auto max-w-3xl px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
       <p className="text-gray-500 mb-6">{post.date}</p>
-      <div className="prose">{post.content}</div>
+      <ReactMarkdown
+        remarkPlugins={[remarkGfm]}
+        components={{
+          a: ({ ...props }) => (
+          <a
+        {...props}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-blue-600 hover:text-blue-800 underline"
+          />
+          ),
+        }}
+      >
+        {post.content}
+      </ReactMarkdown>
     </article>
   );
 }
