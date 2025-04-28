@@ -11,16 +11,19 @@ export const blogPostsData: (BlogPost & { content: string })[] = [
         '素直にそちらを使えば良いじゃない、ってそれはもう、そう！異論なし。そうなんだけど、、、なんかさぁ、プラットフォーマーに乗っかるよりも、自分で作る方が楽しいじゃない？面倒だけど。' +
         'というかやりたくないけど。というかとにかく面倒だけど。ついでにね、実装も学べるじゃない？一石二鳥じゃない？二兎を追うものは一兎をも得ないんじゃないかって？、、確かに。異論なし。' +
         '今の所は兎を取り逃している、気がしているけど、まぁいいや。',
-    date: '2024-04-24',
+    date: '2025-04-24',
     readTime: '5 min read',
     slug: 'getting-started-with-nextjs',
   },
   {
     id: '2',
-    title: 'Why TypeScript is Worth Learning',
+    title: 'Flutter part is good',
     description: 'Discover the benefits of TypeScript and how it can improve your development experience.',
-    content: 'This is a sample blog post about the benefits of TypeScript.',
-    date: '2023-09-20',
+    content: 'Fullter（というかDart）には["part / part of"という構文があり](https://zenn.dev/harx/articles/09d569d011bb4f)、これを使用することで、' +
+        'プライベートなウィジェットを別ファイルとして管理することが出来るらしい。なんて便利なんだ。しかもこの場合、親（part of）でimportしたmoduleは子（part）でも使用出来るので、再度importする必要も無くなる。' +
+        'なんて便利なんだ。でもこれ、親子関係が不明確だとかえって混乱を来すのでは？と思ったのだが、そこはちゃんとフォローされていた。なんて便利なんだ！\n' +
+        '折角だし、既存のcodeをちょっとこれ使ってrefactoringしようかな。あ、、でもその前にIDEを変更したから、build環境を再度構築する必要があるなぁ、、、うーん、面倒。',
+    date: '2025-04-29',
     readTime: '8 min read',
     slug: 'why-typescript-is-worth-learning',
   },
