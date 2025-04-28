@@ -1,4 +1,4 @@
-import { BlogPost, DetailedBlogPost } from '../types';
+import { BlogPost } from '../types';
 
 // Create a complete blog post dataset with all fields
 export const blogPostsData: (BlogPost & { content: string })[] = [
@@ -59,28 +59,3 @@ export const getBlogPosts = (): BlogPost[] => {
     id, title, description, date, readTime, slug
   })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
-
-export const getDetailedBlogPosts = (): DetailedBlogPost[] => {
-  return blogPostsData.map(({ id, title, content, date, slug }) => ({
-    id, title, content, date, slug
-  }));
-};
-
-export const getBlogPostBySlug = (slug: string): DetailedBlogPost | undefined => {
-  const post = blogPostsData.find((post) => post.slug === slug);
-  if (!post) return undefined;
-  
-  return {
-    id: post.id,
-    title: post.title,
-    content: post.content,
-    date: post.date,
-    slug: post.slug
-  };
-};
-
-// Format date to a more readable format
-export function formatDate(dateString: string): string {
-  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
-  return new Date(dateString).toLocaleDateString('ja-JP', options);
-}
