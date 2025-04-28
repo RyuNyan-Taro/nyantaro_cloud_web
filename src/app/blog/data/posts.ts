@@ -59,3 +59,9 @@ export const getBlogPosts = (): BlogPost[] => {
     id, title, description, date, readTime, slug
   })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
+
+// Format date to a more readable format
+export function formatDate(dateString: string): string {
+  const options: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  return new Date(dateString).toLocaleDateString('ja-JP', options);
+}
