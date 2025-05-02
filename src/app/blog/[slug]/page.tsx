@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import {blogPostsData} from "@/app/blog/data/posts";
+import { fetchBlogPosts, formatDate } from "@/app/blog/data/posts";
 
 // Generate metadata for the page
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -8,17 +8,18 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
 
-  const post = blogPostsData.find((post) => post.slug === slug);
-  
+  const posts = await fetchBlogPosts();
+  const post = posts.find((post) => post.slug === slug);
+
   if (!post) {
     return {
       title: 'Post Not Found',
     };
   }
-  
+
   return {
     title: `${post.title} | Blog`,
-    description: post.content.substring(0, 160),
+    description: post.content.replace(/<[^>]*>/g, '').substring(0, 160), // Strip HTML for description
   };
 }
 
@@ -32,8 +33,9 @@ export default async function BlogPostPage({ params }: Props) {
   // Must await params before accessing properties
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
-  
-  const post = blogPostsData.find((post) => post.slug === slug);
+
+  const posts = await fetchBlogPosts();
+  const post = posts.find((post) => post.slug === slug);
 
   if (!post) {
     notFound();
@@ -42,8 +44,8 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <article className="mx-auto max-w-3xl px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-      <p className="text-gray-500 mb-6">{post.date}</p>
-      <div className="prose">{post.content}</div>
+      <p className="text-gray-500 mb-6">{formatDate(post.date)}</p>
+      <div className="prose" dangerouslySetInnerHTML={{ __html: post.content }} />
     </article>
   );
 }
