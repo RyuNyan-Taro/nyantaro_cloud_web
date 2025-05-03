@@ -51,7 +51,7 @@ export async function fetchBlogPosts(): Promise<(BlogPost & { content: string })
       headers: new Headers({
         'X-MICROCMS-API-KEY': process.env.X_MICROCMS_API_KEY || ''
       }),
-      cache: 'no-store' // Disable caching to always get fresh data
+      next: { revalidate: 3600}
     });
 
     if (!response.ok) {
