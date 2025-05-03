@@ -4,6 +4,7 @@ import Contents from '@/components/Contents';
 import SnsList from '@/components/SnsList';
 
 export default function Home() {
+    console.log(process.env.TEST_KEY);
   return (
     <div className="main-container">
         <Header />
