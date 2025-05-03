@@ -89,6 +89,52 @@ export const getBlogPosts = async (): Promise<BlogPost[]> => {
   })).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 };
 
+// Function to fetch a single blog post by ID
+export async function fetchBlogPostById(postId: string): Promise<(BlogPost & { content: string }) | null> {
+  console.log(`Fetching blog post with ID: ${postId}`);
+
+  // Check if we have the post in cache
+  if (blogPostsCache) {
+    const cachedPost = blogPostsCache.find(post => post.id === postId);
+    if (cachedPost) {
+      console.log(`Found post ${postId} in cache`);
+      return cachedPost;
+    }
+  }
+
+  // If not in cache, fetch from API
+  try {
+    const response = await fetch(`https://nyantaroblog.microcms.io/api/v1/blogs/${postId}`, {
+      headers: new Headers({
+        'X-MICROCMS-API-KEY': process.env.X_MICROCMS_API_KEY || ''
+      }),
+      cache: 'no-store'
+    });
+
+    if (!response.ok) {
+      throw new Error(`Failed to fetch blog post: ${response.status}`);
+    }
+
+    const post: MicroCMSBlogPost = await response.json();
+
+    // Format post data
+    const formattedPost = {
+      id: post.id,
+      title: post.title,
+      description: post.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...', // Strip HTML and limit to 160 chars
+      content: post.content,
+      date: new Date(post.publishedAt).toISOString().split('T')[0], // Format as YYYY-MM-DD
+      readTime: `${Math.ceil(post.content.length / 500)} min read`, // Rough estimate based on content length
+      slug: post.id // Use post ID as slug
+    };
+
+    return formattedPost;
+  } catch (error) {
+    console.error(`Error fetching blog post ${postId}:`, error);
+    return null;
+  }
+}
+
 // For backward compatibility - will be used by components that expect synchronous data
 export const blogPostsData: (BlogPost & { content: string })[] = [];
 

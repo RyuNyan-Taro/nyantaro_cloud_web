@@ -1,12 +1,11 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { fetchBlogPosts, formatDate } from "@/app/blog/services/posts";
+import { fetchBlogPostById, formatDate } from "@/app/blog/services/blogApi";
 import { BlogPost } from '../types';
 import { cache } from 'react';
 
 const getPostData = cache(async (slug: string): Promise<(BlogPost & { content: string }) | null> => {
-  const posts = await fetchBlogPosts();
-  return posts.find((post) => post.slug === slug) || null;
+  return await fetchBlogPostById(slug);
 });
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
@@ -14,7 +13,6 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
 
-  // 通常はgetPostDataの結果を使用しますが、ここでは簡易的な情報のみ提供
   return {
     title: `ブログ記事 - ${slug} | Blog`,
     description: `${slug}についての記事です`, 

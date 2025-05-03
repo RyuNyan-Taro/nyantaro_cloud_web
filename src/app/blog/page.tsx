@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { BlogPostList } from './components/BlogPostList';
-import { getBlogPosts, formatDate } from '@/app/blog/services/posts';
+import { getBlogPosts, formatDate } from '@/app/blog/services/blogApi';
 
 export const metadata: Metadata = {
   title: 'Blog | My Website',
