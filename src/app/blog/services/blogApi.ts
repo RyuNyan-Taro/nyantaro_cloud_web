@@ -118,7 +118,7 @@ export async function fetchBlogPostById(postId: string): Promise<(BlogPost & { c
     const post: MicroCMSBlogPost = await response.json();
 
     // Format post data
-    const formattedPost = {
+    return {
       id: post.id,
       title: post.title,
       description: post.content.replace(/<[^>]*>/g, '').substring(0, 160) + '...', // Strip HTML and limit to 160 chars
@@ -127,8 +127,6 @@ export async function fetchBlogPostById(postId: string): Promise<(BlogPost & { c
       readTime: `${Math.ceil(post.content.length / 500)} min read`, // Rough estimate based on content length
       slug: post.id // Use post ID as slug
     };
-
-    return formattedPost;
   } catch (error) {
     console.error(`Error fetching blog post ${postId}:`, error);
     return null;
