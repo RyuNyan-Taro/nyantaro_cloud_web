@@ -1,26 +1,21 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import ReactMarkdown from 'react-markdown';
-import {blogPostsData} from "@/app/blog/data/posts";
-import remarkGfm from "remark-gfm";
+import { fetchBlogPostById, formatDate } from "@/app/blog/services/blogApi";
+import { BlogPost } from '../types';
+import { cache } from 'react';
 
-// Generate metadata for the page
+const getPostData = cache(async (slug: string): Promise<(BlogPost & { content: string }) | null> => {
+  return await fetchBlogPostById(slug);
+});
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   // Must await params before accessing properties
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
 
-  const post = blogPostsData.find((post) => post.slug === slug);
-  
-  if (!post) {
-    return {
-      title: 'Post Not Found',
-    };
-  }
-  
   return {
-    title: `${post.title} | Blog`,
-    description: post.content.substring(0, 160),
+    title: `ブログ記事 - ${slug} | Blog`,
+    description: `${slug}についての記事です`, 
   };
 }
 
@@ -31,11 +26,10 @@ type Props = {
 };
 
 export default async function BlogPostPage({ params }: Props) {
-  // Must await params before accessing properties
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
-  
-  const post = blogPostsData.find((post) => post.slug === slug);
+
+  const post = await getPostData(slug);
 
   if (!post) {
     notFound();
@@ -44,22 +38,8 @@ export default async function BlogPostPage({ params }: Props) {
   return (
     <article className="mx-auto max-w-3xl px-4 py-8">
       <h1 className="text-3xl font-bold mb-4">{post.title}</h1>
-      <p className="text-gray-500 mb-6">{post.date}</p>
-      <ReactMarkdown
-        remarkPlugins={[remarkGfm]}
-        components={{
-          a: ({ ...props }) => (
-          <a
-        {...props}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="text-blue-600 hover:text-blue-800 underline"
-          />
-          ),
-        }}
-      >
-        {post.content}
-      </ReactMarkdown>
+      <p className="text-gray-500 mb-6">{formatDate(post.date)}</p>
+      <div className="prose" dangerouslySetInnerHTML={{ __html: post.content }} />
     </article>
   );
 }
