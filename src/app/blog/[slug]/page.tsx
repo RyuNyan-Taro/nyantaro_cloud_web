@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
-import { fetchBlogPosts, formatDate } from "@/app/blog/data/posts";
+import { fetchBlogPosts, formatDate } from "@/app/blog/services/posts";
 import { BlogPost } from '../types';
 import { cache } from 'react';
 
