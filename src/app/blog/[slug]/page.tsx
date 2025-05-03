@@ -4,13 +4,11 @@ import { fetchBlogPosts, formatDate } from "@/app/blog/data/posts";
 import { BlogPost } from '../types';
 import { cache } from 'react';
 
-// React Cacheを使用してデータ取得を一元化
 const getPostData = cache(async (slug: string): Promise<(BlogPost & { content: string }) | null> => {
   const posts = await fetchBlogPosts();
   return posts.find((post) => post.slug === slug) || null;
 });
 
-// Generate metadata for the page
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }): Promise<Metadata> {
   // Must await params before accessing properties
   const resolvedParams = await params;
@@ -30,7 +28,6 @@ type Props = {
 };
 
 export default async function BlogPostPage({ params }: Props) {
-  // Must await params before accessing properties
   const resolvedParams = await params;
   const slug = resolvedParams.slug;
 
