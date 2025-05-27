@@ -12,7 +12,7 @@ const buttonsList: ButtonData[] = [
         alt: "blog"
     },
     {
-        href: "/creating",
+        href: "/gallery",
         src: "/Clone.jpeg",
         alt: "gallery"
     },
