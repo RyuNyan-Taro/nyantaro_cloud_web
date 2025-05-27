@@ -1,5 +1,6 @@
 'use client'
 
+import Image from 'next/image'
 import { useEffect, useState } from 'react'
 import Papa from 'papaparse'
 import { Card, CardContent } from '@/components/ui/card'
@@ -58,13 +59,13 @@ export default function GalleryPage() {
             const uniqueCategories: string[] = Array.from(
                 new Set(
                     categories
-                        .filter((c): c is Category =>
+                        .filter((c: Category): c is Category =>
                             c !== null &&
                             typeof c === 'object' &&
                             'name' in c &&
                             typeof c.name === 'string'
                         )
-                        .map((c) => c.name)
+                        .map((c: Category) => c.name)
                 )
             )
 
@@ -74,8 +75,9 @@ export default function GalleryPage() {
             setAllCategories(uniqueCategories)
 
         }
-
-        loadData()
+        loadData().catch((error) => {
+            console.error('Failed to load data:', error);
+        });
     }, [])
 
     const filtered = selectedCategory
@@ -106,7 +108,13 @@ export default function GalleryPage() {
                 {filtered.map((img) => (
                     <Card key={img.id}>
                         <CardContent className="p-2">
-                            <img src={img.path} alt="" className="w-full h-auto rounded-md" />
+                            <Image
+                                src={img.path || '/placeholder.jpg'} // フォールバック画像を設定
+                                alt=""
+                                width={500}
+                                height={300}
+                                className="w-full h-auto rounded-md"
+                            />
                             <div className="text-xs text-muted-foreground mt-2">
                                 {img.categories.join(', ')}
                             </div>
