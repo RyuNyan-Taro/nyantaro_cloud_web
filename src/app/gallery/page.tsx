@@ -48,7 +48,7 @@ export default function GalleryPage() {
 
             const enrichedImages: ImageWithCategories[] = images.map((img: Image) => {
                 const related = imageCats.filter((ic: ImageCategory) => ic.image_id === img.id)
-                const categoryNames = related.map((ic: ImageCategory) => categoryMap.get(ic.category_id)).filter((name: string | null): name is string => name !== undefined)
+                const categoryNames = related.map((ic: ImageCategory) => categoryMap.get(ic.category_id)).filter((name: string | undefined): name is string => name !== undefined)
                 return {
                     id: img.id,
                     path: `/${img.path}`,
