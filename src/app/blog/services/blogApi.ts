@@ -49,7 +49,7 @@ export async function fetchBlogPosts(): Promise<(BlogPost & { content: string })
   try {
     const response = await fetch('https://nyantaroblog.microcms.io/api/v1/blogs', {
       headers: new Headers({
-        'X-MICROCMS-API-KEY': process.env.X_MICROCMS_API_KEY || ''
+        'X-MICROCMS-API-KEY': process.env.MICROCMS_API_KEY || ''
       }),
       next: { revalidate: 3600}
     });
@@ -106,7 +106,7 @@ export async function fetchBlogPostById(postId: string): Promise<(BlogPost & { c
   try {
     const response = await fetch(`https://nyantaroblog.microcms.io/api/v1/blogs/${postId}`, {
       headers: new Headers({
-        'X-MICROCMS-API-KEY': process.env.X_MICROCMS_API_KEY || ''
+        'X-MICROCMS-API-KEY': process.env.MICROCMS_API_KEY || ''
       }),
       cache: 'no-store'
     });
