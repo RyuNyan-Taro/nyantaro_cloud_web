@@ -2,8 +2,6 @@ import { Metadata } from 'next';
 import { BlogPostList } from './components/BlogPostList';
 import { getBlogPosts, formatDate } from '@/app/blog/services/blogApi';
 
-export const dynamic = 'force-dynamic'
-
 export const metadata: Metadata = {
   title: 'Blog | My Website',
   description: 'Read our latest blog posts and articles',
