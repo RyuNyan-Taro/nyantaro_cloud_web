@@ -69,22 +69,30 @@ export default function MainGalleryPage({ photos }: MainGalleryPageProps) {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
                 {filtered.map((img) => (
-                    <Card key={img.id}>
-                        <CardContent className="p-2">
-                            <Image
-                                src={img.path || '/placeholder.jpg'} // フォールバック画像を設定
-                                alt=""
-                                width={500}
-                                height={300}
-                                className="w-full h-auto rounded-md"
-                            />
-                            <div className="text-xs text-muted-foreground mt-2">
-                                {img.categories.join(', ')}
-                            </div>
-                        </CardContent>
-                    </Card>
+                    PhotoCard(img)
                 ))}
             </div>
         </div>
     )
+}
+
+function PhotoCard(img: ImageWithCategories) {
+    return (
+        <div>
+            <Card key={img.id}>
+                <CardContent className="p-2">
+                    <Image
+                        src={img.path || '/placeholder.jpg'} // フォールバック画像を設定
+                        alt=""
+                        width={500}
+                        height={300}
+                        className="w-full h-auto rounded-md"
+                    />
+                    <div className="text-xs text-muted-foreground mt-2">
+                        {img.categories.join(', ')}
+                    </div>
+                </CardContent>
+            </Card>
+        </div>
+    );
 }
