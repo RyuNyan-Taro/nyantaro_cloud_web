@@ -2,24 +2,8 @@
 
 import Image from 'next/image'
 import { useEffect, useState } from 'react'
-import Papa from 'papaparse'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
-
-type Image = {
-    id: string
-    path: string
-}
-
-type Category = {
-    id: string
-    name: string
-}
-
-type ImageCategory = {
-    image_id: string
-    category_id: string
-}
 
 type ImageWithCategories = {
     id: string
@@ -27,58 +11,37 @@ type ImageWithCategories = {
     categories: string[]
 }
 
-export default function MainGalleryPage() {
+type SupabasePhoto = {
+    publicUrl: string
+}
+
+interface MainGalleryPageProps {
+    photos: SupabasePhoto[]
+}
+
+const allCategories = ['cat', 'dog', 'bird', 'fish', 'other']
+
+export default function MainGalleryPage({ photos }: MainGalleryPageProps) {
     const [images, setImages] = useState<ImageWithCategories[]>([])
-    const [allCategories, setAllCategories] = useState<string[]>([])
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
 
     useEffect(() => {
         const loadData = async () => {
-            const [imagesCsv, categoriesCsv, imageCatsCsv] = await Promise.all([
-                fetch('/data/images.csv').then((res) => res.text()),
-                fetch('/data/categories.csv').then((res) => res.text()),
-                fetch('/data/image_categories.csv').then((res) => res.text())
-            ])
-
-            const images = Papa.parse<Image>(imagesCsv, { header: true }).data
-            const categories = Papa.parse<Category>(categoriesCsv, { header: true }).data
-            const imageCats = Papa.parse<ImageCategory>(imageCatsCsv, { header: true }).data
-
-            const categoryMap = new Map(categories.map((c: Category) => [c.id, c.name]))
-
-            const enrichedImages: ImageWithCategories[] = images.map((img: Image) => {
-                const related = imageCats.filter((ic: ImageCategory) => ic.image_id === img.id)
-                const categoryNames = related.map((ic: ImageCategory) => categoryMap.get(ic.category_id)).filter((name: string | undefined): name is string => name !== undefined)
+            const supabaseImages: ImageWithCategories[] = photos.map((photo, index) => {
                 return {
-                    id: img.id,
-                    path: `/${img.path}`,
-                    categories: categoryNames,
+                    id: index.toString(),
+                    path: photo.publicUrl,
+                    categories: []  // todo: add categories in the MainGalleryPageProps
                 }
-            })
+            });
 
-            const uniqueCategories: string[] = Array.from(
-                new Set(
-                    categories
-                        .filter((c: Category): c is Category =>
-                            c !== null &&
-                            typeof c === 'object' &&
-                            'name' in c &&
-                            typeof c.name === 'string'
-                        )
-                        .map((c: Category) => c.name)
-                )
-            )
+            setImages(supabaseImages);
+        };
 
-            console.log('Categories:', categories)
-            console.log('Unique Categories:', uniqueCategories)
-            setImages(enrichedImages)
-            setAllCategories(uniqueCategories)
-
-        }
         loadData().catch((error) => {
             console.error('Failed to load data:', error);
         });
-    }, [])
+    }, [photos])
 
     const filtered = selectedCategory
         ? images.filter(img => img.categories.includes(selectedCategory))

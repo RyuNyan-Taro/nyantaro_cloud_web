@@ -8,7 +8,7 @@ export default async function GalleryPage() {
 
     return (
         <div>
-            <MainGalleryPage />
+            <MainGalleryPage photos={photos || []} />
         </div>
     );
 }
