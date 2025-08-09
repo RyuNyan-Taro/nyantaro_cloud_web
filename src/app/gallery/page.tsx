@@ -5,6 +5,8 @@ export default async function GalleryPage() {
 
     const photos = await fetchPhotos();
 
+    console.log('photos:', photos);
+
     return (
         <div>
             <MainGalleryPage photos={photos || []} />

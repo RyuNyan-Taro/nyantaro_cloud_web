@@ -14,10 +14,25 @@ export default async function fetchPhotos(): Promise<{ publicUrl: string }[] | u
         .storage
         .from(bucketName).list();
 
+    const table_data = await supabase
+        .from('photo_url')
+        .select(`
+            photo_id:id,
+            url,
+            photo_url_category_relation!inner(
+              photo_category(
+                category
+              )
+            )
+        `)
+
+    console.log('data:', data, error)
+    console.log('table:', table_data)
+
     if (error) {
         console.error('Error fetching images:', error);
     } else {
-        return data?.map(file => {
-            return supabase.storage.from(bucketName).getPublicUrl(file.name).data;
+        return table_data.data?.map(data => {
+            return { 'publicUrl': data.url };
         }) || [];
     }}
