@@ -15,10 +15,10 @@ export default async function fetchPhotos(): Promise<{ publicUrl: string }[] | u
         .from(bucketName).list();
 
     const table_data = await supabase
-        .from('photo_url')
+        .from('photo_name')
         .select(`
             photo_id:id,
-            url,
+            name,
             photo_url_category_relation!inner(
               photo_category(
                 category
@@ -33,6 +33,7 @@ export default async function fetchPhotos(): Promise<{ publicUrl: string }[] | u
         console.error('Error fetching images:', error);
     } else {
         return table_data.data?.map(data => {
-            return { 'publicUrl': data.url };
+            const publicUrl: string = supabaseUrl + '/' + process.env.SUPABASE_PHOTO_DIRECTORY + '/' + data.name;
+            return { publicUrl };
         }) || [];
     }}
