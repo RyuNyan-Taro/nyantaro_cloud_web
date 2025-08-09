@@ -14,7 +14,7 @@ type PhotoContent = {
 
 type PhotoTable = PostgrestSingleResponse<PhotoContent[]>
 
-export default async function fetchPhotos(): Promise<photo.Photo[] | undefined> {
+export default async function fetchPhotos(): Promise<photo.Photos | undefined> {
     const supabaseUrl = process.env.SUPABASE_URL;
     const supabaseKey = process.env.SUPABASE_KEY;
     const bucketName = 'photos';

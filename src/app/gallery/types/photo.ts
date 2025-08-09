@@ -6,3 +6,9 @@ export type Photo = {
     publicUrl: Url;
     categories: Categories;
 }
+
+export type Photos = Photo[];
+
+export type MainGalleryPageProps = {
+    photos: Photos
+}

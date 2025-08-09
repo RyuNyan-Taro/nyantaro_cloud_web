@@ -5,37 +5,37 @@ import { useEffect, useState } from 'react'
 import { Card, CardContent } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 
+import { MainGalleryPageProps } from "@/app/gallery/types/photo";
+
 type ImageWithCategories = {
     id: string
     path: string
     categories: string[]
 }
 
-type SupabasePhoto = {
-    publicUrl: string
-}
-
-interface MainGalleryPageProps {
-    photos: SupabasePhoto[]
-}
-
-const allCategories = ['cat', 'dog', 'bird', 'fish', 'other']
-
 export default function MainGalleryPage({ photos }: MainGalleryPageProps) {
     const [images, setImages] = useState<ImageWithCategories[]>([])
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
+    const [allCategories, setAllCategories] = useState<string[]>([])
 
     useEffect(() => {
         const loadData = async () => {
             const supabaseImages: ImageWithCategories[] = photos.map((photo, index) => {
+                console.log(photo.publicUrl)
+                console.log(photo.categories)
                 return {
                     id: index.toString(),
                     path: photo.publicUrl,
-                    categories: []  // todo: add categories in the MainGalleryPageProps
+                    categories: photo.categories
                 }
             });
 
+            const uniqueCategories = new Set(
+                photos.flatMap(photo => photo.categories)
+            );
+
             setImages(supabaseImages);
+            setAllCategories(Array.from(uniqueCategories));
         };
 
         loadData().catch((error) => {
