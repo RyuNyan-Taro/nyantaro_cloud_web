@@ -33,13 +33,8 @@ function getSupabaseClient() {
 }
 
 export async function fetchPhotos(): Promise<photo.Photos> {
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_KEY;
 
-    const supabase = createClient(
-        supabaseUrl || '',
-        supabaseKey || ''
-    );
+    const supabase = getSupabaseClient();
 
     const table_data: PhotoTable = await supabase
         .from('photo_name')
@@ -58,7 +53,7 @@ export async function fetchPhotos(): Promise<photo.Photos> {
         return [];
     } else {
         return table_data.data?.map((data: PhotoContent) => {
-            const publicUrl: photo.Url = supabaseUrl + '/' + process.env.SUPABASE_PHOTO_DIRECTORY + '/' + data.name;
+            const publicUrl: photo.Url = process.env.SUPABASE_URL + '/' + process.env.SUPABASE_PHOTO_DIRECTORY + '/' + data.name;
             const categories: photo.Categories = data.photo_url_category_relation.map(category => category.photo_category.category);
 
             return { publicUrl, categories };
@@ -66,13 +61,8 @@ export async function fetchPhotos(): Promise<photo.Photos> {
     }}
 
 export async function fetchCategories(): Promise<photo.Categories> {
-    const supabaseUrl = process.env.SUPABASE_URL;
-    const supabaseKey = process.env.SUPABASE_KEY;
 
-    const supabase = createClient(
-        supabaseUrl || '',
-        supabaseKey || ''
-    );
+    const supabase = getSupabaseClient();
 
     const table_data: CategoryTable = await supabase
         .from('photo_category')
