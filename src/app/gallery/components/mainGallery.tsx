@@ -13,7 +13,7 @@ type ImageWithCategories = {
     categories: string[]
 }
 
-export default function MainGalleryPage({ photos }: MainGalleryPageProps) {
+export default function MainGalleryPage({ photos, categories }: MainGalleryPageProps) {
     const [images, setImages] = useState<ImageWithCategories[]>([])
     const [selectedCategory, setSelectedCategory] = useState<string | null>(null)
     const [allCategories, setAllCategories] = useState<string[]>([])
@@ -30,18 +30,14 @@ export default function MainGalleryPage({ photos }: MainGalleryPageProps) {
                 }
             });
 
-            const uniqueCategories = new Set(
-                photos.flatMap(photo => photo.categories)
-            );
-
             setImages(supabaseImages);
-            setAllCategories(Array.from(uniqueCategories));
+            setAllCategories(Array.from(categories));
         };
 
         loadData().catch((error) => {
             console.error('Failed to load data:', error);
         });
-    }, [photos])
+    }, [photos, categories])
 
     const filtered = selectedCategory
         ? images.filter(img => img.categories.includes(selectedCategory))

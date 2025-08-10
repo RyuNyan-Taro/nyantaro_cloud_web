@@ -10,5 +10,6 @@ export type Photo = {
 export type Photos = Photo[];
 
 export type MainGalleryPageProps = {
-    photos: Photos
+    photos: Photos,
+    categories: Categories,
 }
