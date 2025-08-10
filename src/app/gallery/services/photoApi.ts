@@ -51,14 +51,14 @@ export async function fetchPhotos(): Promise<photo.Photos> {
     if (table_data.error) {
         console.error('Error fetching images:', table_data.error);
         return [];
-    } else {
-        return table_data.data?.map((data: PhotoContent) => {
-            const publicUrl: photo.Url = process.env.SUPABASE_URL + '/' + process.env.SUPABASE_PHOTO_DIRECTORY + '/' + data.name;
-            const categories: photo.Categories = data.photo_url_category_relation.map(category => category.photo_category.category);
+    }
+    return table_data.data?.map((data: PhotoContent) => {
+        const publicUrl: photo.Url = process.env.SUPABASE_URL + '/' + process.env.SUPABASE_PHOTO_DIRECTORY + '/' + data.name;
+        const categories: photo.Categories = data.photo_url_category_relation.map(category => category.photo_category.category);
 
-            return { publicUrl, categories };
-        }) || [];
-    }}
+        return { publicUrl, categories };
+    }) || [];
+}
 
 export async function fetchCategories(): Promise<photo.Categories> {
 
