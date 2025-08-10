@@ -8,6 +8,11 @@ const nextConfig: NextConfig = {
                 protocol: "https",
                 hostname: "doodleipsum.com",
             },
+            {
+                protocol: "https",
+                hostname: process.env.SUPABASE_URL?.replace('https://', '') || '',
+                pathname: "/storage/v1/object/public/**",
+            },
         ],
     },
 };
