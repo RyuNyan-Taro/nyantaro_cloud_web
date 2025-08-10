@@ -9,9 +9,6 @@ export default async function GalleryPage() {
 
     const props: MainGalleryPageProps = { photos: photos || [], categories: categories || [] }
 
-    console.log('photos:', photos);
-    console.log('categories:', categories);
-
     return (
         <div>
             <MainGalleryPage {...props} />

@@ -21,8 +21,6 @@ export default function MainGalleryPage({ photos, categories }: MainGalleryPageP
     useEffect(() => {
         const loadData = async () => {
             const supabaseImages: ImageWithCategories[] = photos.map((photo, index) => {
-                console.log(photo.publicUrl)
-                console.log(photo.categories)
                 return {
                     id: index.toString(),
                     path: photo.publicUrl,

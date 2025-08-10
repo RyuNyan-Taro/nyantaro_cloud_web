@@ -57,9 +57,6 @@ export async function fetchPhotos(): Promise<photo.Photos | undefined> {
               )
             )
         `)
-    //
-    // console.log('data:', data, error)
-    // console.log('table:', table_data)
 
     if (error) {
         console.error('Error fetching images:', error);
