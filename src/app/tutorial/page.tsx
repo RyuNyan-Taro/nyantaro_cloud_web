@@ -1,59 +1,121 @@
-import { Metadata } from 'next';
-import Link from 'next/link';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Page Under Construction | My Website',
-  description: 'This page is currently being created',
+import React, { useEffect, useState } from "react";
+import Prism from 'prismjs';
+import "./Tutorial.css"
+
+import "prismjs/themes/prism-tomorrow.css";
+
+// Then import the core languages that TSX depends on
+import "prismjs/components/prism-clike";
+import "prismjs/components/prism-javascript";
+import "prismjs/components/prism-jsx";
+import "prismjs/components/prism-typescript";
+// Now we can safely import TSX
+import "prismjs/components/prism-tsx";
+
+// Other language imports
+import "prismjs/components/prism-json";
+import "prismjs/components/prism-css";
+
+
+
+type CodeBlockProps = {
+    code: string;
+    language?: string;
 };
 
-export default function CreatingPage() {
-  return (
-    <div className="max-w-4xl mx-auto px-4 py-8 text-center">
-      <h1 className="text-3xl font-bold mb-8">Page Under Construction</h1>
+const CodeBlock: React.FC<CodeBlockProps> = ({ code, language = "typescript" }) => {
+    const [isClient, setIsClient] = useState(false);
 
-      <div className="flex flex-col items-center justify-center">
-        <svg
-          className="w-16 h-16 text-yellow-500 mb-4"
-          fill="none"
-          stroke="currentColor"
-          viewBox="0 0 24 24"
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path
-            strokeLinecap="round"
-            strokeLinejoin="round"
-            strokeWidth="2"
-            d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"
-          />
-        </svg>
-        <p className="text-xl font-semibold">
-          This page is currently being created
-        </p>
-        <p>
-          We&apos;re working hard to bring you new content. Please check back soon!
-        </p>
+    useEffect(() => {
+        setIsClient(true);
+
+        const highlight = async () => {
+
+            // 少し遅延を入れてDOMの準備が完了してから実行
+            setTimeout(() => {
+                Prism.highlightAll();
+            }, 1000);
+        };
+
+        highlight();
+    }, [code, language]);
+
+    if (!isClient) {
+        return (
+            <pre className={`language-${language}`} style={{ borderRadius: "10px", padding: "1rem" }}>
+                <code className={`language-${language}`}>{code}</code>
+            </pre>
+        );
+    }
+
+    return (
+        <pre className={`language-${language}`} style={{ borderRadius: "10px", padding: "1rem" }}>
+            <code className={`language-${language}`}>
+                {code}
+            </code>
+        </pre>
+    );
+};
+
+const LayoutContainer  = `
+<div class="container">
+  <div class="item">A</div>
+  <div class="item">B</div>
+  <div class="item">C</div>
+</div>
+`;
+
+const FlexDirection = `
+<div class="vertical">
+  Text without span
+  <span>Text inside span</span>
+  <a href="https://example.com">Link</a>
+</div>
+`
+
+const VerticalCSS = `
+.vertical {
+  display: flex;
+  flex-direction: column;
+}
+`
+
+const HorizontalCSS = `
+.horizontal {
+  display: flex;
+  flex-direction: row;
+}
+`
+
+export default function TutorialPage() {
+    return (
+      <div style={{backgroundColor: "#0a0a0a", color: "#eaeaea", minHeight: "100vh", padding: "2rem"}}>
+          <a href="https://2ality.com/2025/10/css-layout.html">ref</a>
+        <h1 className="text-3xl font-bold mb-8">Container</h1>
+        <CodeBlock code={LayoutContainer} language="html"/>
+        <div className="container">
+          <div className="item">A</div>
+          <div className="item">B</div>
+          <div className="item">C</div>
+        </div>
+        <h1 className="text-3xl font-bold mb-8">flexbox</h1>
+        <h2 className="text-2xl font-bold mb-8">vertical</h2>
+        <CodeBlock code={FlexDirection} language="html"/>
+        <CodeBlock code={VerticalCSS} language="css"/>
+        <div className="vertical">
+            Text without span
+            <span>Text inside span</span>
+            <a href="https://example.com">Link</a>
+        </div>
+        <h2 className="text-2xl font-bold mb-8">horizontal (default)</h2>
+        <CodeBlock code={HorizontalCSS} language="css"/>
+        <div className="horizontal">
+          Text without span
+          <span>Text inside span</span>
+          <a href="https://example.com">Link</a>
+        </div>
       </div>
-
-      <Link 
-        href="/"
-        className="inline-flex items-center text-sm font-medium text-blue-600 hover:text-blue-800"
-      >
-        <svg 
-          className="w-4 h-4 mr-1" 
-          fill="none" 
-          stroke="currentColor" 
-          viewBox="0 0 24 24" 
-          xmlns="http://www.w3.org/2000/svg"
-        >
-          <path 
-            strokeLinecap="round" 
-            strokeLinejoin="round" 
-            strokeWidth="2" 
-            d="M10 19l-7-7m0 0l7-7m-7 7h18"
-          />
-        </svg>
-        Return to Home
-      </Link>
-    </div>
-  );
+    );
 }
