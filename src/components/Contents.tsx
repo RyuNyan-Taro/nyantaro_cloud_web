@@ -17,9 +17,9 @@ const buttonsList: ButtonData[] = [
         alt: "gallery"
     },
     {
-        href: "/creating",
+        href: "/tutorial",
         src: "/Future.jpeg",
-        alt: "movie"
+        alt: "tutorial"
     },
     {
         href: "/creating",
