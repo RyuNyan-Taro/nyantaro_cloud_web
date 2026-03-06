@@ -10,11 +10,11 @@ const nextConfig: NextConfig = {
             },
             {
                 protocol: "https",
-                hostname: process.env.SUPABASE_URL?.replace('https://', '') || '',
+                hostname: "blyixuxiltbiaxvesavl.supabase.co",
                 pathname: "/storage/v1/object/public/**",
             },
         ],
-    },
+    }
 };
 
 export default nextConfig;
