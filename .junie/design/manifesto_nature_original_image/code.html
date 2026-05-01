@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Nyantaro Cloud - Manifesto</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#d9eaa3",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#bdce89",
+                        "primary-container": "#2d3a27",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#fd9d71",
+                        "on-secondary-fixed": "#360f00",
+                        "error-container": "#93000a",
+                        "secondary": "#ffb596",
+                        "surface-dim": "#101419",
+                        "outline-variant": "#444841",
+                        "on-tertiary-container": "#96a666",
+                        "outline": "#8f9289",
+                        "on-tertiary-fixed-variant": "#3e4c16",
+                        "on-surface-variant": "#c5c8be",
+                        "background": "#101419",
+                        "on-primary-fixed-variant": "#3d4b36",
+                        "surface-bright": "#35393f",
+                        "on-tertiary-fixed": "#161f00",
+                        "surface-container-highest": "#31353b",
+                        "primary-fixed": "#d8e7cc",
+                        "surface-variant": "#31353b",
+                        "primary-fixed-dim": "#bccbb1",
+                        "surface-container-low": "#181c21",
+                        "secondary-container": "#76320f",
+                        "surface-tint": "#bccbb1",
+                        "surface-container-high": "#262a30",
+                        "on-secondary": "#581e00",
+                        "on-primary-fixed": "#131f0e",
+                        "surface-container": "#1c2025",
+                        "secondary-fixed": "#ffdbcd",
+                        "on-background": "#dfe2ea",
+                        "surface": "#101419",
+                        "surface-container-lowest": "#0a0f13",
+                        "on-tertiary": "#283501",
+                        "inverse-on-surface": "#2d3136",
+                        "secondary-fixed-dim": "#ffb596",
+                        "on-primary": "#273421",
+                        "inverse-primary": "#54624d",
+                        "on-primary-container": "#95a48b",
+                        "tertiary-container": "#2e3b06",
+                        "tertiary": "#bdce89",
+                        "inverse-surface": "#dfe2ea",
+                        "on-surface": "#dfe2ea",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#bccbb1",
+                        "on-secondary-fixed-variant": "#76320f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "wild-xl": "7.31rem",
+                        "wild-xs": "0.43rem",
+                        "wild-sm": "1.12rem",
+                        "wild-md": "2.67rem",
+                        "wild-lg": "4.89rem"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Newsreader"],
+                        "body-md": ["Work Sans"],
+                        "headline-md": ["Newsreader"],
+                        "body-lg": ["Work Sans"],
+                        "headline-lg": ["Newsreader"],
+                        "label-sm": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["4.5rem", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["2rem", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "body-lg": ["1.25rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["3rem", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .noise-overlay {
+            position: absolute;
+            inset: 0;
+            opacity: 0.05;
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            pointer-events: none;
+            mix-blend-mode: overlay;
+        }
+        .torn-edge {
+            clip-path: polygon(0% 2%, 5% 0%, 15% 3%, 25% 0%, 35% 2%, 45% 0%, 55% 3%, 65% 0%, 75% 2%, 85% 0%, 95% 3%, 100% 0%, 100% 98%, 95% 100%, 85% 97%, 75% 100%, 65% 98%, 55% 100%, 45% 97%, 35% 100%, 25% 98%, 15% 100%, 5% 97%, 0% 100%);
+        }
+        .ambient-glow {
+            box-shadow: inset 0 0 40px rgba(45, 58, 39, 0.4), 0 0 60px rgba(16, 20, 25, 0.8);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen relative overflow-x-hidden antialiased">
+<div class="noise-overlay z-50"></div>
+<!-- TopNavBar (JSON implementation) -->
+<!-- Note: Manifesto implies a departure from main app flow, suppressing standard nav based on shell relevance rules -->
+<!-- However, providing a distinct header to anchor the brand as requested by "Use original website visual assets" and JSON context. -->
+<header class="hidden md:flex flex-col w-full bg-stone-900/95 dark:bg-[#1a2316] text-emerald-500 dark:text-emerald-400 font-newsreader text-lg italic tracking-tight docked full-width top-0 border-b-2 border-stone-800/50 backdrop-blur-md shadow-[inset_0_-10px_20px_rgba(0,0,0,0.5)] z-40 relative">
+<div class="flex justify-between items-center w-full px-11 py-5 max-w-[1600px] mx-auto">
+<div class="text-3xl font-serif font-black text-emerald-100 dark:text-emerald-50 -rotate-1 tracking-widest">
+                NYANTARO CLOUD
+            </div>
+<!-- Navigation links hidden on this specific page type per shell visibility rules, keeping the header as a brand anchor -->
+<div class="flex items-center gap-6">
+<!-- Actions -->
+<span class="material-symbols-outlined text-stone-400 hover:text-stone-200 transition-colors cursor-pointer hover:scale-105 hover:-rotate-1 transition-all duration-300 ease-in-out" data-icon="filter_vintage">
+                    filter_vintage
+                </span>
+</div>
+</div>
+</header>
+<!-- SideNavBar (Mobile) - Suppressed per rules for non-destination pages -->
+<main class="relative z-10 w-full max-w-7xl mx-auto px-wild-md py-wild-xl">
+<!-- Hero Section: "The Flesh is Obsolete" -->
+<section class="relative min-h-[819px] flex flex-col justify-center items-start mb-wild-xl">
+<!-- Organic overlapping background element -->
+<div class="absolute right-[-10%] top-[10%] w-2/3 h-3/4 rounded-[40%_60%_70%_30%/40%_50%_60%_50%] bg-surface-container-high rotate-3 ambient-glow -z-10 mix-blend-multiply opacity-80 blur-xl"></div>
+<div class="relative z-20 w-full max-w-4xl">
+<h1 class="font-headline-xl text-headline-xl text-primary-fixed mb-wild-sm transform -rotate-1 skew-x-[-2deg] tracking-tighter drop-shadow-2xl">
+                    THE FLESH IS OBSOLETE
+                </h1>
+<div class="ml-wild-md pl-wild-sm border-l-[3px] border-tertiary-fixed-dim/40 py-wild-xs max-w-2xl transform translate-y-wild-xs rotate-1">
+<p class="font-body-lg text-body-lg text-on-surface-variant mb-6 leading-relaxed">
+                        We stopped building machines when we realized we could grow them. The rigid, clinical architectures of the past have failed. They fracture. They rust. They resist the world.
+                    </p>
+<p class="font-body-md text-body-md text-on-surface-variant opacity-80 italic">
+                        Nyantaro Cloud is not built; it is cultivated. Rooted in the chaotic efficiency of organic systems.
+                    </p>
+</div>
+</div>
+<!-- Chaotic stray element -->
+<div class="absolute left-[5%] bottom-[-5%] w-32 h-32 rounded-full border border-outline/20 mix-blend-overlay rotate-[17deg]"></div>
+</section>
+<!-- Image & Text Bento-ish Organic Layout -->
+<section class="relative grid grid-cols-1 md:grid-cols-12 gap-wild-md mb-wild-xl">
+<!-- Left Image Block -->
+<div class="md:col-span-7 relative z-10 transform -rotate-2 hover:rotate-0 transition-transform duration-700">
+<div class="torn-edge p-2 bg-surface-variant shadow-[10px_10px_30px_rgba(0,0,0,0.6)]">
+<img alt="Cat's eye close up" class="w-full h-[600px] object-cover mix-blend-luminosity hover:mix-blend-normal transition-all duration-1000 grayscale hover:grayscale-0" data-alt="A highly detailed, extreme macro shot of a feline eye, revealing the intricate, organic textures of the iris resembling a chaotic nebula or dense forest canopy. The lighting is moody and cinematic, cast from an oblique angle to highlight the ridges and valleys of the eye's surface. The color palette is dark, earthy greens and deep amber, embodying a 'Nature Chaos' aesthetic. The overall mood is intense, primal, and slightly unsettling, blending the biological with the alien." src="https://lh3.googleusercontent.com/aida-public/AB6AXuCb_PyWH6AnzTTVauXBesYlZPc58LekuGZc46fU7uoXiMGu_7pTf-HjovYmeOc4WTu5hqnWhePnHn0i2SPkKclRiDfim7CkhIvNh0tPXrY3SiBGgJsdSG94l2zX3bb6vJD4b52BmwRPK6J63THzpTr0zOofNuoRw6BSnCo5NskFuxaZ94EsyU8PV55B8YbZ1IIgccjYCy6Sl8lQ870QNr8bA2k7TiyYrweAf5QqI9tAloqA3UIQjgYCrGtX6E3lOOT_99-G9BlgcF_f"/>
+</div>
+<!-- Splat icon overlap -->
+<div class="absolute -bottom-6 -right-6 bg-primary-container text-primary-fixed p-4 rounded-[30%_70%_70%_30%/30%_30%_70%_70%] shadow-lg rotate-[15deg]">
+<span class="material-symbols-outlined text-4xl" data-icon="psychiatry" style="font-variation-settings: 'FILL' 1;">
+                        psychiatry
+                    </span>
+</div>
+</div>
+<!-- Right Text Block -->
+<div class="md:col-span-5 relative flex flex-col justify-center pt-wild-md md:pt-0 z-20">
+<div class="bg-surface-container/90 p-wild-sm border-t border-r border-outline-variant/30 backdrop-blur-sm transform translate-x-[-10%] md:translate-x-[-20%] translate-y-[10%] rotate-1 shadow-[inset_0_0_20px_rgba(0,0,0,0.8)]">
+<h2 class="font-headline-md text-headline-md text-tertiary mb-wild-sm">Cultivating Chaos</h2>
+<ul class="space-y-6">
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-3 mt-1 transform -rotate-[10deg]" data-icon="eco">eco</span>
+<span class="font-body-md text-body-md text-on-surface">Data behaves like mycelium. It spreads, searches, and connects where there is nourishment, ignoring the artificial grids we try to impose upon it.</span>
+</li>
+<li class="flex items-start">
+<span class="material-symbols-outlined text-secondary mr-3 mt-1 transform rotate-[5deg]" data-icon="landscape">landscape</span>
+<span class="font-body-md text-body-md text-on-surface">Our algorithms do not sort; they erode. Like water shaping a canyon, the most used paths deepen, while the unused fade back into the substrate.</span>
+</li>
+</ul>
+<button class="mt-wild-sm bg-secondary-container border-2 border-outline text-on-secondary-container font-label-sm text-label-sm px-6 py-3 uppercase tracking-widest rounded-[2px_12px_4px_8px] hover:translate-y-[2px] hover:shadow-[inset_0_4px_10px_rgba(0,0,0,0.5)] transition-all flex items-center justify-center gap-2 w-fit">
+                        Initiate Growth
+                        <span class="material-symbols-outlined text-sm" data-icon="arrow_forward_ios">arrow_forward_ios</span>
+</button>
+</div>
+</div>
+</section>
+<!-- Wide Abstract Texture Section -->
+<section class="relative w-full overflow-hidden mb-wild-xl rounded-[10px_40px_10px_30px] shadow-[0_20px_50px_rgba(0,0,0,0.7)] transform rotate-[0.5deg]">
+<div class="absolute inset-0 bg-gradient-to-br from-surface-container-lowest to-primary-container opacity-80 mix-blend-multiply z-10"></div>
+<img alt="Abstract nature texture" class="w-full h-[400px] object-cover scale-110" data-alt="An abstract, high-resolution macro photograph blending organic and digital textures. It looks like a cross between mossy stone, cracked earth, and glitching circuitry. The color palette is dominated by deep, shadowy greens, charcoal grays, and subtle hints of rust and terracotta. The lighting is uneven, creating deep pockets of shadow and sudden glints of metallic-looking light. The overall aesthetic is gritty, tactile, and chaotic, representing the fusion of nature and technology." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAY_JzbzNYU1tOvVaVlswDAioX9pIXw8sE_6FHBhng3q9gRAvhxspXfOrwO6Pp3Q2j2f5e3yrdG3uyqkM4rNyCo1zok-GOyksaWgqiO_ajWSnI_GKG9KZ5vPz8lkr_ov3ITfVf4ljwBNFOxx2FTWQ0RtiIdOiohHKnb_MeAV9D63jCTH8l4JPNhUTBgdjWcl2cPPJ7hbwAptPumzZFV1k-xayUNdaIH0QUhHPLMBxDHzORv7-Db43wsDm7iaWU-AEvcp9KihM8XOysP"/>
+<div class="absolute inset-0 z-20 flex items-center justify-center p-wild-md">
+<div class="text-center max-w-3xl mix-blend-exclusion">
+<h3 class="font-headline-lg text-headline-lg text-white mb-4 italic tracking-widest">Embrace the Overgrowth</h3>
+<div class="h-[2px] w-32 bg-secondary mx-auto transform rotate-[-2deg]"></div>
+</div>
+</div>
+</section>
+</main>
+<!-- Footer (JSON implementation) -->
+<footer class="w-full mt-23 border-t-4 border-stone-800/80 bg-stone-900 dark:bg-[#151a12] text-stone-400 font-newsreader text-sm leading-relaxed inner-shadow-heavy flex flex-col items-center justify-center py-17 px-7 text-center relative z-40" style="clip-path: polygon(0% 5%, 5% 0%, 15% 4%, 25% 1%, 35% 5%, 45% 0%, 55% 4%, 65% 1%, 75% 5%, 85% 0%, 95% 4%, 100% 1%, 100% 100%, 0% 100%);">
+<div class="text-xl font-bold text-stone-600 mb-6 transform -rotate-1">
+            NYANTARO CLOUD
+        </div>
+<ul class="flex flex-wrap justify-center gap-4 mb-8">
+<li><a class="text-stone-500 px-3 hover:text-emerald-200 transition-colors" href="#">Lichens</a></li>
+<li><a class="text-stone-500 px-3 hover:text-emerald-200 transition-colors" href="#">Erosion</a></li>
+<li><a class="text-stone-500 px-3 hover:text-emerald-200 transition-colors" href="#">Contact</a></li>
+</ul>
+<div class="opacity-60 text-xs tracking-widest uppercase font-label-sm">
+            © Nyantaro Cloud - Rooted in Chaos
+        </div>
+</footer>
+</body></html>
