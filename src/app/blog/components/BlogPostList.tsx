@@ -8,12 +8,13 @@ interface BlogPostListProps {
 
 export const BlogPostList: React.FC<BlogPostListProps> = ({ posts, formatDate }) => {
   return (
-    <div className="space-y-8">
-      {posts.map((post) => (
-        <BlogPostCard 
+    <div className="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-wild-md">
+      {posts.map((post, index) => (
+        <BlogPostCard
           key={post.id}
-          post={post} 
-          formatDate={formatDate} 
+          post={post}
+          formatDate={formatDate}
+          index={index}
         />
       ))}
     </div>

@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Specimen Gallery - Nyantaro Cloud</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              "colors": {
+                      "tertiary-fixed": "#d9eaa3",
+                      "on-error": "#690005",
+                      "tertiary-fixed-dim": "#bdce89",
+                      "primary-container": "#2d3a27",
+                      "error": "#ffb4ab",
+                      "on-secondary-container": "#fd9d71",
+                      "on-secondary-fixed": "#360f00",
+                      "error-container": "#93000a",
+                      "secondary": "#ffb596",
+                      "surface-dim": "#101419",
+                      "outline-variant": "#444841",
+                      "on-tertiary-container": "#96a666",
+                      "outline": "#8f9289",
+                      "on-tertiary-fixed-variant": "#3e4c16",
+                      "on-surface-variant": "#c5c8be",
+                      "background": "#101419",
+                      "on-primary-fixed-variant": "#3d4b36",
+                      "surface-bright": "#35393f",
+                      "on-tertiary-fixed": "#161f00",
+                      "surface-container-highest": "#31353b",
+                      "primary-fixed": "#d8e7cc",
+                      "surface-variant": "#31353b",
+                      "primary-fixed-dim": "#bccbb1",
+                      "surface-container-low": "#181c21",
+                      "secondary-container": "#76320f",
+                      "surface-tint": "#bccbb1",
+                      "surface-container-high": "#262a30",
+                      "on-secondary": "#581e00",
+                      "on-primary-fixed": "#131f0e",
+                      "surface-container": "#1c2025",
+                      "secondary-fixed": "#ffdbcd",
+                      "on-background": "#dfe2ea",
+                      "surface": "#101419",
+                      "surface-container-lowest": "#0a0f13",
+                      "on-tertiary": "#283501",
+                      "inverse-on-surface": "#2d3136",
+                      "secondary-fixed-dim": "#ffb596",
+                      "on-primary": "#273421",
+                      "inverse-primary": "#54624d",
+                      "on-primary-container": "#95a48b",
+                      "tertiary-container": "#2e3b06",
+                      "tertiary": "#bdce89",
+                      "inverse-surface": "#dfe2ea",
+                      "on-surface": "#dfe2ea",
+                      "on-error-container": "#ffdad6",
+                      "primary": "#bccbb1",
+                      "on-secondary-fixed-variant": "#76320f"
+              },
+              "borderRadius": {
+                      "DEFAULT": "0.25rem",
+                      "lg": "0.5rem",
+                      "xl": "0.75rem",
+                      "full": "9999px"
+              },
+              "spacing": {
+                      "wild-xl": "7.31rem",
+                      "wild-xs": "0.43rem",
+                      "wild-sm": "1.12rem",
+                      "wild-md": "2.67rem",
+                      "wild-lg": "4.89rem"
+              },
+              "fontFamily": {
+                      "headline-xl": ["Newsreader"],
+                      "body-md": ["Work Sans"],
+                      "headline-md": ["Newsreader"],
+                      "body-lg": ["Work Sans"],
+                      "headline-lg": ["Newsreader"],
+                      "label-sm": ["Work Sans"]
+              },
+              "fontSize": {
+                      "headline-xl": ["4.5rem", {"lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600"}],
+                      "body-md": ["1rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-md": ["2rem", {"lineHeight": "1.3", "fontWeight": "500"}],
+                      "body-lg": ["1.25rem", {"lineHeight": "1.6", "fontWeight": "400"}],
+                      "headline-lg": ["3rem", {"lineHeight": "1.2", "fontWeight": "500"}],
+                      "label-sm": ["0.75rem", {"lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600"}]
+              }
+            }
+          }
+        }
+    </script>
+<style>
+        .texture-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+            opacity: 0.05;
+            mix-blend-mode: overlay;
+        }
+        
+        .torn-edge {
+            clip-path: polygon(0% 2%, 5% 0%, 10% 3%, 15% 1%, 20% 4%, 25% 0%, 30% 3%, 35% 1%, 40% 4%, 45% 0%, 50% 3%, 55% 1%, 60% 4%, 65% 0%, 70% 3%, 75% 1%, 80% 4%, 85% 0%, 90% 3%, 95% 1%, 100% 2%, 100% 98%, 95% 99%, 90% 97%, 85% 100%, 80% 96%, 75% 99%, 70% 97%, 65% 100%, 60% 96%, 55% 99%, 50% 97%, 45% 100%, 40% 96%, 35% 99%, 30% 97%, 25% 100%, 20% 96%, 15% 99%, 10% 97%, 5% 100%, 0% 98%);
+        }
+
+        .pebble-shape-1 {
+            border-radius: 60% 40% 30% 70% / 60% 30% 70% 40%;
+        }
+        
+        .pebble-shape-2 {
+            border-radius: 40% 60% 70% 30% / 40% 50% 60% 50%;
+        }
+
+        .pebble-shape-3 {
+            border-radius: 50% 50% 20% 80% / 25% 80% 20% 75%;
+        }
+
+        .ambient-glow {
+            box-shadow: inset 0 0 40px rgba(0,0,0,0.8), 0 0 20px rgba(28, 32, 37, 0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background min-h-screen relative overflow-x-hidden selection:bg-tertiary-fixed selection:text-on-tertiary-fixed flex flex-col md:flex-row">
+<!-- Texture Overlay -->
+<div class="fixed inset-0 pointer-events-none z-50 texture-noise"></div>
+<!-- SideNavBar (WEB) -->
+<nav class="hidden md:flex flex-col h-full pt-wild-md pb-wild-sm gap-y-7 fixed h-full w-64 left-0 top-0 border-r border-surface-variant bg-surface-dim tonal-layering with grainy-texture-overlay shadow-[20px_0_50px_rgba(0,0,0,0.8)] z-40">
+<div class="px-5 mb-wild-md">
+<h1 class="font-headline-md text-headline-md text-primary tracking-widest text-shadow-sm rotate-1">The Wilds</h1>
+<p class="font-body-md text-body-md text-on-surface-variant italic mt-2">Non-linear exploration</p>
+</div>
+<div class="flex-1 flex flex-col gap-4 px-2">
+<a class="flex items-center gap-4 text-on-surface-variant py-3 px-5 hover:bg-surface-container-high transition-colors hover:translate-x-2 hover:skew-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">terrain</span>
+<span class="font-label-sm text-label-sm uppercase tracking-[0.2em]">Wilderness</span>
+</a>
+<a class="flex items-center gap-4 text-on-surface-variant py-3 px-5 hover:bg-surface-container-high transition-colors hover:translate-x-2 hover:skew-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">potted_plant</span>
+<span class="font-label-sm text-label-sm uppercase tracking-[0.2em]">Sprouts</span>
+</a>
+<!-- Active State -->
+<a class="flex items-center gap-4 bg-primary-container text-primary-fixed border-l-4 border-primary rounded-r-full py-3 px-5 rotate-1 hover:translate-x-2 hover:skew-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">park</span>
+<span class="font-label-sm text-label-sm uppercase tracking-[0.2em]">Canopy</span>
+</a>
+</div>
+<div class="mt-auto px-2">
+<a class="flex items-center gap-4 text-on-surface-variant py-3 px-5 hover:bg-surface-container-high transition-colors hover:translate-x-2 hover:skew-x-1 transition-transform" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+<span class="font-label-sm text-label-sm uppercase tracking-[0.2em]">Lore</span>
+</a>
+</div>
+</nav>
+<!-- TopNavBar (MOBILE) -->
+<nav class="md:hidden flex justify-between items-center w-full px-5 py-5 border-b-2 border-surface-variant bg-surface-dim/95 backdrop-blur-md z-40 fixed top-0">
+<h1 class="font-headline-md text-headline-md text-primary -rotate-1 tracking-widest">NYANTARO CLOUD</h1>
+<button class="text-primary hover:scale-105 transition-transform">
+<span class="material-symbols-outlined">filter_vintage</span>
+</button>
+</nav>
+<!-- Main Canvas -->
+<main class="flex-1 md:ml-64 pt-24 md:pt-wild-md pb-wild-xl px-4 md:px-wild-lg relative min-h-screen bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-surface-container-high via-background to-surface-container-lowest">
+<!-- Header -->
+<header class="mb-wild-lg relative z-10 pl-wild-sm md:pl-0">
+<h2 class="font-headline-xl text-headline-xl text-primary-fixed mix-blend-screen opacity-90 drop-shadow-[0_4px_20px_rgba(188,203,177,0.15)] transform -rotate-2">Specimen Gallery</h2>
+<div class="w-24 h-1 bg-tertiary-fixed mt-4 rounded-full opacity-60 ml-wild-sm rotate-1"></div>
+</header>
+<!-- Non-Grid Organic Layout -->
+<div class="relative w-full min-h-[1200px]">
+<!-- Specimen 1: N. VERDANTUS -->
+<article class="absolute top-0 left-[5%] md:left-[10%] w-[280px] md:w-[340px] transform hover:scale-105 hover:-rotate-2 transition-transform duration-500 z-20">
+<div class="relative w-full aspect-[4/5] pebble-shape-1 overflow-hidden ambient-glow bg-surface-container-high border-4 border-outline-variant p-2 group">
+<img alt="N. VERDANTUS" class="w-full h-full object-cover pebble-shape-1 opacity-80 group-hover:opacity-100 transition-opacity duration-500 sepia-[.3] hue-rotate-15" data-alt="A stylized, mystical feline creature composed of dark, mossy green textures and tangled vines, sitting elegantly on a jagged stone pedestal. The creature blends seamlessly with a dark earth-toned background featuring subtle, glowing spores. The lighting is moody and organic, mimicking dappled sunlight filtering through a dense, primeval forest canopy. The overall aesthetic is grounded, raw, and tactile, embodying a 'nature chaos' design philosophy with deep forest greens and slate grays." src="https://lh3.googleusercontent.com/aida-public/AB6AXuAtnB1-1yGpEohTWn6V3CspY6vjjVScaez78UZ_efmGoROxeFP-52bOj1ssUywreRDJUQhVCIvPRp_k16pMRTXEj15yUREo9JCaYtmmAI7LeiyTahRiYpRsPQGnMv6i1m8ZbSUGregQJL00vUmWCll5EBJSV3giGsJlmVq-O3vkqRhY-3_DmjbzgRucEXBH07TgyJOWbFUPP2BW2gv66Z_Ci7FSmd-BDWRJ58tVpkBWSh72VMW5LW_xrM71PK0BhA1xfHT8z0oElRzq"/>
+<!-- Stray Accent -->
+<div class="absolute -top-4 -right-4 w-12 h-12 bg-secondary/20 rounded-full blur-xl pointer-events-none"></div>
+</div>
+<div class="mt-wild-xs ml-wild-sm bg-primary-container inline-block px-4 py-1 torn-edge shadow-lg transform rotate-2">
+<h3 class="font-label-sm text-label-sm text-primary-fixed uppercase tracking-widest">N. Verdantus</h3>
+</div>
+</article>
+<!-- Specimen 2: MYCO-TERROR -->
+<article class="absolute top-[250px] right-[5%] md:right-[15%] w-[300px] md:w-[380px] transform hover:scale-[1.02] hover:rotate-1 transition-transform duration-500 z-10">
+<div class="relative w-full aspect-square pebble-shape-2 overflow-hidden ambient-glow bg-surface-container-high border-2 border-secondary/30 p-1 group">
+<img alt="MYCO-TERROR" class="w-full h-full object-cover pebble-shape-2 opacity-75 group-hover:opacity-95 transition-opacity duration-500 contrast-125 saturate-50" data-alt="A rugged, feral cat-like entity with fungal growths and mushroom caps sprouting from its back and shoulders, crouched defensively on rotting bark. The environment is cloaked in deep shadow, illuminated only by bioluminescent terracotta and slate-colored fungi. The style is brutalist and tactile, resembling a gritty, non-linear fantasy illustration. The atmosphere is tense and earthy, dominated by rich, dark browns, muted oranges, and textured, organic decay." src="https://lh3.googleusercontent.com/aida-public/AB6AXuDuYOo5vOtKtuUN4_UmIQGbiX3QZySg0Seb37At6QWu9WlQYQQwxghm_Y4wN6Q8iGk-RcTQJT052QMDDvD3F6eE4JUblzdG_r31U2S0WWcVPWqgJNB1CT6x8XVuFmLBl4bkKfgIVtBM7iCvxvalL90YNBeflvgAqB-k9946qM_DEa3PqnhrqT802MqKxWSEwboansVCl-YfIJkskWU4pwc1x8-6_R-pOBkkBIzKdpL0d5lAM_AuXWlCo2PUtZLRpmM93EKsJuEEHz5u"/>
+</div>
+<div class="mt-wild-xs mr-wild-sm bg-secondary-container inline-block px-5 py-2 torn-edge shadow-lg transform -rotate-3 float-right">
+<h3 class="font-label-sm text-label-sm text-secondary-fixed uppercase tracking-widest">Myco-Terror</h3>
+</div>
+</article>
+<!-- Specimen 3: LICHEN-CLAW -->
+<article class="absolute top-[600px] left-[15%] md:left-[25%] w-[260px] md:w-[320px] transform hover:scale-105 hover:rotate-3 transition-transform duration-500 z-30">
+<div class="relative w-full aspect-[3/4] pebble-shape-3 overflow-hidden ambient-glow bg-surface-container-low border-[3px] border-tertiary-container p-3 group">
+<img alt="LICHEN-CLAW" class="w-full h-full object-cover pebble-shape-3 opacity-85 group-hover:opacity-100 transition-opacity duration-500 grayscale-[0.4]" data-alt="An ethereal, spirit-like feline figure woven entirely from pale, silvery lichens and ancient roots, standing poised on a desolate, rocky outcrop. The background is an abstract wash of dark, stormy grays and muted olive greens, conveying a sense of isolation and raw nature. The lighting is soft but directional, highlighting the intricate, textured details of the lichen fur. The visual style is highly tactile and skeuomorphic, feeling almost like a physical collage of forest debris." src="https://lh3.googleusercontent.com/aida-public/AB6AXuD38TL5CdtvtFqWEw91SvjKTo-g5YaUTyNN3nySt-CxMlEhSQjZnHb0QVQZU2EhfD44-mYxByCrUjUjcKngVKd055RiDhPFR2k3cz0TM7-Nld8QIJRTIFNxhFCu-Xg8DW2UoDlrT7NABj7OT58-UtEYXjdasqLxpUqtEbwQSR0snaYrvkzsf4uz1v8V-sgBIGa_eQYb2PJYZTSAviQ4spbt9Y0O6WZnTIkOVb6qSe9Y57pmwVc4o18BiMJw5czdIw_zxcU5jt-0RPgG"/>
+</div>
+<div class="mt-wild-xs ml-wild-sm bg-tertiary-container inline-block px-4 py-1 torn-edge shadow-lg transform rotate-1">
+<h3 class="font-label-sm text-label-sm text-tertiary-fixed uppercase tracking-widest">Lichen-Claw</h3>
+</div>
+</article>
+<!-- Decorative Blobs (Chaos Accents) -->
+<div class="absolute top-[10%] right-[40%] w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-10"></div>
+<div class="absolute top-[40%] left-[10%] w-48 h-48 bg-secondary/5 rounded-full blur-3xl -z-10"></div>
+<div class="absolute bottom-[20%] right-[20%] w-40 h-40 bg-tertiary/5 rounded-full blur-3xl -z-10"></div>
+</div>
+</main>
+<!-- BottomNavBar (MOBILE ONLY) -->
+<nav class="md:hidden fixed bottom-0 w-full bg-surface-dim/95 backdrop-blur-md border-t border-surface-variant flex justify-around items-center py-3 px-2 z-50 shadow-[0_-10px_40px_rgba(0,0,0,0.5)]">
+<a class="flex flex-col items-center gap-1 text-on-surface-variant p-2" href="#">
+<span class="material-symbols-outlined">terrain</span>
+<span class="font-label-sm text-[10px] uppercase">Wilderness</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-on-surface-variant p-2" href="#">
+<span class="material-symbols-outlined">potted_plant</span>
+<span class="font-label-sm text-[10px] uppercase">Sprouts</span>
+</a>
+<!-- Active -->
+<a class="flex flex-col items-center gap-1 text-primary-fixed bg-primary-container/30 p-2 rounded-lg transform -translate-y-2" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">park</span>
+<span class="font-label-sm text-[10px] uppercase">Canopy</span>
+</a>
+</nav>
+</body></html>

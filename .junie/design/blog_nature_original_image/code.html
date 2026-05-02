@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>ROOT SYSTEM STATUS - Nyantaro Cloud</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&amp;family=Work+Sans:ital,wght@0,100..900;1,100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "tertiary-fixed": "#d9eaa3",
+                        "on-error": "#690005",
+                        "tertiary-fixed-dim": "#bdce89",
+                        "primary-container": "#2d3a27",
+                        "error": "#ffb4ab",
+                        "on-secondary-container": "#fd9d71",
+                        "on-secondary-fixed": "#360f00",
+                        "error-container": "#93000a",
+                        "secondary": "#ffb596",
+                        "surface-dim": "#101419",
+                        "outline-variant": "#444841",
+                        "on-tertiary-container": "#96a666",
+                        "outline": "#8f9289",
+                        "on-tertiary-fixed-variant": "#3e4c16",
+                        "on-surface-variant": "#c5c8be",
+                        "background": "#101419",
+                        "on-primary-fixed-variant": "#3d4b36",
+                        "surface-bright": "#35393f",
+                        "on-tertiary-fixed": "#161f00",
+                        "surface-container-highest": "#31353b",
+                        "primary-fixed": "#d8e7cc",
+                        "surface-variant": "#31353b",
+                        "primary-fixed-dim": "#bccbb1",
+                        "surface-container-low": "#181c21",
+                        "secondary-container": "#76320f",
+                        "surface-tint": "#bccbb1",
+                        "surface-container-high": "#262a30",
+                        "on-secondary": "#581e00",
+                        "on-primary-fixed": "#131f0e",
+                        "surface-container": "#1c2025",
+                        "secondary-fixed": "#ffdbcd",
+                        "on-background": "#dfe2ea",
+                        "surface": "#101419",
+                        "surface-container-lowest": "#0a0f13",
+                        "on-tertiary": "#283501",
+                        "inverse-on-surface": "#2d3136",
+                        "secondary-fixed-dim": "#ffb596",
+                        "on-primary": "#273421",
+                        "inverse-primary": "#54624d",
+                        "on-primary-container": "#95a48b",
+                        "tertiary-container": "#2e3b06",
+                        "tertiary": "#bdce89",
+                        "inverse-surface": "#dfe2ea",
+                        "on-surface": "#dfe2ea",
+                        "on-error-container": "#ffdad6",
+                        "primary": "#bccbb1",
+                        "on-secondary-fixed-variant": "#76320f"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "spacing": {
+                        "wild-xl": "7.31rem",
+                        "wild-xs": "0.43rem",
+                        "wild-sm": "1.12rem",
+                        "wild-md": "2.67rem",
+                        "wild-lg": "4.89rem"
+                    },
+                    "fontFamily": {
+                        "headline-xl": ["Newsreader"],
+                        "body-md": ["Work Sans"],
+                        "headline-md": ["Newsreader"],
+                        "body-lg": ["Work Sans"],
+                        "headline-lg": ["Newsreader"],
+                        "label-sm": ["Work Sans"]
+                    },
+                    "fontSize": {
+                        "headline-xl": ["4.5rem", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "600" }],
+                        "body-md": ["1rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-md": ["2rem", { "lineHeight": "1.3", "fontWeight": "500" }],
+                        "body-lg": ["1.25rem", { "lineHeight": "1.6", "fontWeight": "400" }],
+                        "headline-lg": ["3rem", { "lineHeight": "1.2", "fontWeight": "500" }],
+                        "label-sm": ["0.75rem", { "lineHeight": "1.2", "letterSpacing": "0.05em", "fontWeight": "600" }]
+                    }
+                }
+            }
+        }
+    </script>
+<style>
+        .texture-noise {
+            background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.05'/%3E%3C/svg%3E");
+        }
+        .torn-edge {
+            clip-path: polygon(0% 0%, 100% 2%, 98% 100%, 2% 98%);
+        }
+        .torn-edge-top {
+            clip-path: polygon(0% 5%, 100% 0%, 100% 100%, 0% 100%);
+        }
+        .inner-glow {
+            box-shadow: inset 0 0 20px rgba(0,0,0,0.5);
+        }
+    </style>
+</head>
+<body class="bg-background text-on-background font-body-md min-h-screen texture-noise flex flex-col md:flex-row">
+<!-- SideNavBar (Web) -->
+<nav class="hidden md:flex flex-col h-full w-64 left-0 top-0 border-r border-surface-container-high fixed bg-surface-dim pt-23 pb-11 gap-y-7 shadow-[20px_0_50px_rgba(0,0,0,0.8)] z-50">
+<div class="px-5 mb-8">
+<h2 class="font-headline-md text-headline-md text-on-surface">The Wilds</h2>
+<p class="font-body-md text-body-md text-on-surface-variant italic">Non-linear exploration</p>
+</div>
+<div class="flex-1 flex flex-col gap-y-2">
+<a class="text-on-surface-variant py-3 px-5 hover:bg-surface-container/50 font-headline-md uppercase tracking-[0.2em] text-xs hover:translate-x-2 hover:skew-x-1 transition-transform flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">terrain</span>
+                Wilderness
+            </a>
+<a class="text-on-surface-variant py-3 px-5 hover:bg-surface-container/50 font-headline-md uppercase tracking-[0.2em] text-xs hover:translate-x-2 hover:skew-x-1 transition-transform flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">potted_plant</span>
+                Sprouts
+            </a>
+<a class="bg-primary-container/30 text-on-primary-container border-l-4 border-primary rounded-r-full py-3 px-5 rotate-1 font-headline-md uppercase tracking-[0.2em] text-xs hover:translate-x-2 hover:skew-x-1 transition-transform flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">park</span>
+                Canopy
+            </a>
+</div>
+<div class="mt-auto">
+<a class="text-on-surface-variant py-3 px-5 hover:bg-surface-container/50 font-headline-md uppercase tracking-[0.2em] text-xs hover:translate-x-2 hover:skew-x-1 transition-transform flex items-center gap-3" href="#">
+<span class="material-symbols-outlined">auto_stories</span>
+                Lore
+            </a>
+</div>
+</nav>
+<!-- TopNavBar (Mobile fallback - simplified) -->
+<nav class="md:hidden flex justify-between items-center w-full px-5 py-4 bg-surface-dim border-b border-surface-container-high sticky top-0 z-50">
+<h1 class="font-headline-md text-headline-md text-on-surface">NYANTARO CLOUD</h1>
+<button class="text-on-surface"><span class="material-symbols-outlined">menu</span></button>
+</nav>
+<!-- Main Content Area -->
+<main class="flex-1 md:ml-64 p-wild-md lg:p-wild-lg relative overflow-hidden">
+<!-- Stray Chaos Element -->
+<div class="absolute top-10 right-20 w-32 h-32 bg-primary/5 rounded-full blur-3xl z-0 pointer-events-none mix-blend-screen"></div>
+<header class="mb-wild-lg relative z-10">
+<h1 class="font-headline-xl text-headline-xl text-on-background mb-wild-xs rotate-[-1deg] inline-block">ROOT SYSTEM STATUS</h1>
+<p class="font-body-lg text-body-lg text-on-surface-variant">Monitoring subterranean data flows.</p>
+</header>
+<!-- Unstable Warning Bento Box -->
+<section class="mb-wild-lg grid grid-cols-1 lg:grid-cols-3 gap-wild-sm relative z-10">
+<div class="lg:col-span-2 bg-error-container/20 border-2 border-error/30 p-wild-sm torn-edge relative overflow-hidden inner-glow rotate-[1deg]">
+<!-- Background Glitch Image -->
+<div class="absolute inset-0 z-0 opacity-20 mix-blend-overlay" data-alt="A chaotic, abstract macro shot of glowing, bioluminescent lichen spreading across dark, wet obsidian stone. The image features jarring, glitched digital artifacts in harsh reds and sickly greens overlaid on the organic texture. The lighting is low and moody, conveying a sense of technological decay infecting a primeval forest floor. The style is a hybrid of nature photography and cyberpunk glitch art." style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAAUsG-fCtUnle9E727zhvp7rMyNG1kMqn1EnhCDmKIKMeKjEvOM1RZ-wd7qRAFe6DCt8rIA76xMz22x40iP4ePPu9HKD4xNbVZlr1NZ8Ongh3Ti9nz9rdnXvTH3Zce_pjdP8SQZtYTsQqpNF_upgh_u-_zY8XFEgTfTvMmEaF3V2141pqTTFmzTAsdbUyAhfELWVrYV6S7h6T2owxzlk56bzjcwiWw4PnCJuT5PI1QVKey-z4N3ZhOBFn5hmiDJhOxZrTzQotHP29G'); background-size: cover;"></div>
+<div class="relative z-10">
+<div class="flex items-center gap-wild-xs mb-wild-xs">
+<span class="material-symbols-outlined text-error text-3xl animate-pulse">warning</span>
+<h2 class="font-headline-md text-headline-md text-error">NODE COLLAPSE IMMINENT</h2>
+</div>
+<p class="font-body-md text-body-md text-on-error-container mb-wild-sm">Sub-surface sector 7 is experiencing massive data erosion. Lichen overgrowth detected in primary conduits.</p>
+<div class="bg-surface/50 p-4 border border-error/20 font-body-sm text-on-surface-variant break-all">
+                        ERR_SPORE_INFILTRATION // [0x8A7B] // ROOT_SEVERED
+                    </div>
+</div>
+</div>
+<!-- Manual Override Terminal -->
+<div class="bg-surface-container p-wild-sm border border-outline-variant torn-edge shadow-[0_10px_30px_rgba(0,0,0,0.5)] rotate-[-1deg]">
+<h3 class="font-label-sm text-label-sm text-primary mb-wild-xs uppercase tracking-widest border-b border-outline-variant pb-2">Manual Override</h3>
+<p class="font-body-md text-body-md text-on-surface-variant mb-wild-sm">Initiate physical severance of affected roots.</p>
+<button class="w-full bg-secondary-container text-on-secondary-container font-label-sm text-label-sm uppercase py-4 px-6 border-2 border-outline rounded-none hover:translate-y-1 hover:bg-secondary-container/80 transition-all flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">gavel</span>
+                     Sever Root
+                 </button>
+</div>
+</section>
+<!-- System Nodes Grid -->
+<section class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-wild-md relative z-10">
+<!-- Node Card 1 (Healthy) -->
+<div class="bg-primary-container p-wild-sm torn-edge shadow-[10px_10px_0px_rgba(0,0,0,0.3)] relative">
+<div class="absolute -top-4 -left-4 w-12 h-12 bg-primary/20 rounded-full blur-xl"></div>
+<h4 class="font-label-sm text-label-sm text-primary uppercase mb-2">Sector 1</h4>
+<div class="text-headline-md font-headline-md text-on-primary-container mb-4">Deep Stone</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-tertiary-fixed shadow-[0_0_10px_rgba(217,234,163,0.8)]"></span>
+<span class="font-body-md text-body-md text-tertiary-fixed">Stable Resonance</span>
+</div>
+</div>
+<!-- Node Card 2 (Warning) -->
+<div class="bg-surface-container-high p-wild-sm torn-edge shadow-[10px_10px_0px_rgba(0,0,0,0.3)] rotate-[2deg] relative">
+<h4 class="font-label-sm text-label-sm text-secondary uppercase mb-2">Sector 2</h4>
+<div class="text-headline-md font-headline-md text-on-surface mb-4">Moss Canopy</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-secondary shadow-[0_0_10px_rgba(255,181,150,0.8)] animate-pulse"></span>
+<span class="font-body-md text-body-md text-secondary">Fungal Interference</span>
+</div>
+</div>
+<!-- Node Card 3 (Offline) -->
+<div class="bg-surface-container p-wild-sm torn-edge shadow-[10px_10px_0px_rgba(0,0,0,0.3)] relative opacity-60 grayscale">
+<h4 class="font-label-sm text-label-sm text-outline uppercase mb-2">Sector 3</h4>
+<div class="text-headline-md font-headline-md text-on-surface mb-4">Eroded Path</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-outline"></span>
+<span class="font-body-md text-body-md text-outline">Dormant</span>
+</div>
+</div>
+<!-- Node Card 4 (Healthy) -->
+<div class="bg-primary-container p-wild-sm torn-edge shadow-[10px_10px_0px_rgba(0,0,0,0.3)] relative rotate-[-1deg]">
+<h4 class="font-label-sm text-label-sm text-primary uppercase mb-2">Sector 4</h4>
+<div class="text-headline-md font-headline-md text-on-primary-container mb-4">Crystal Vein</div>
+<div class="flex items-center gap-2">
+<span class="w-3 h-3 rounded-full bg-tertiary-fixed shadow-[0_0_10px_rgba(217,234,163,0.8)]"></span>
+<span class="font-body-md text-body-md text-tertiary-fixed">Optimal Flow</span>
+</div>
+</div>
+</section>
+</main>
+</body></html>

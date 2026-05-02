@@ -1,0 +1,1 @@
+Apply the previously approved plan. See manifesto-nature-home-redesign plan for full details.
