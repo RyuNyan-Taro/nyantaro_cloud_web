@@ -11,6 +11,8 @@ type Props = {
     alt: string
     size?: number
     className?: string
+    grayscale?: boolean
+    organicBlend?: boolean
 }
 
 export const RoundImageButton: React.FC<Props> = ({
@@ -18,7 +20,9 @@ export const RoundImageButton: React.FC<Props> = ({
     src,
     alt,
     size = 300,
-    className
+    className,
+    grayscale = false,
+    organicBlend = false,
 }) => {
     return (
         <Link href={href}
@@ -34,7 +38,11 @@ export const RoundImageButton: React.FC<Props> = ({
                 width={size}
                 height={size}
                 unoptimized
-                className="object-cover w-full h-full"
+                className={cn(
+                    "object-cover w-full h-full transition-all duration-1000",
+                    grayscale && "grayscale hover:grayscale-0",
+                    organicBlend && "mix-blend-luminosity hover:mix-blend-normal"
+                )}
             />
             {alt && (
                 <span className="absolute inset-0 flex items-center justify-center
