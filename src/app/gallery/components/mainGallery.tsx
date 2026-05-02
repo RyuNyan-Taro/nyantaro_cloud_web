@@ -150,7 +150,7 @@ function SpecimenCard({ img, index }: { img: ImageWithCategories; index: number 
                     alt={label}
                     fill
                     sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                    className={`object-cover ${v.pebbleShape} opacity-80 group-hover:opacity-100 transition-opacity duration-500 ${v.imgFilter}`}
+                    className={`object-cover opacity-80 group-hover:opacity-100 transition-opacity duration-500 ${v.imgFilter}`}
                 />
                 <div className="absolute -top-4 -right-4 w-12 h-12 bg-secondary/20 rounded-full blur-xl pointer-events-none" />
             </div>
