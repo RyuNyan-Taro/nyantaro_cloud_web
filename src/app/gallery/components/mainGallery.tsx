@@ -83,7 +83,10 @@ export default function MainGalleryPage({ photos, categories }: MainGalleryPageP
     return (
         <div className="min-h-screen relative overflow-x-hidden bg-[radial-gradient(ellipse_at_top_right,_var(--tw-gradient-stops))] from-surface-container-high via-background to-surface-container-lowest px-4 md:px-wild-lg pt-wild-md pb-wild-xl">
             {/* Texture overlay */}
-            <div className="fixed inset-0 pointer-events-none z-50 texture-noise" />
+            <div
+                className="fixed inset-0 pointer-events-none z-50 texture-noise"
+                style={{ '--texture-opacity': '1.0' } as React.CSSProperties}
+            />
 
             {/* Decorative blobs */}
             <div className="absolute top-[10%] right-[40%] w-32 h-32 bg-primary/5 rounded-full blur-3xl -z-10 pointer-events-none" />
