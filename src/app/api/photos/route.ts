@@ -22,11 +22,13 @@ type PhotoContent = {
     }[];
 }
 
-type PhotoData = {
+export type PhotoData = {
     id: number;
     publicUrl: photo.Url;
     categories: photo.Categories;
 }
+
+export type PhotoDataResponse = PhotoData[];
 
 type PhotoTable = PostgrestSingleResponse<PhotoContent[]>
 
@@ -59,7 +61,7 @@ export async function GET(req: NextRequest) {
         return NextResponse.json({ error: table_data.error.message }, { status: 500 });
     }
 
-    const data: PhotoData[] = table_data.data?.map((data: PhotoContent) => {
+    const data: PhotoDataResponse = table_data.data?.map((data: PhotoContent) => {
         const id: number = data.photo_id;
         const publicUrl: photo.Url = process.env.SUPABASE_URL + '/' + process.env.SUPABASE_PHOTO_DIRECTORY + '/' + data.name;
         const categories: photo.Categories = data.photo_url_category_relation.map(category => category.photo_category.category);
