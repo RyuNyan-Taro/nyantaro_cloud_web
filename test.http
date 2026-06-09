@@ -1,0 +1,3 @@
+GET http://localhost:3000/api/photos
+Authorization: Bearer {{API_TOKEN}}
+Content-Type: application/json
