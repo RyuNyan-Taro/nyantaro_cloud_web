@@ -1,24 +1,11 @@
 import {createClient, PostgrestSingleResponse} from '@supabase/supabase-js';
 import * as photo from '../types/photo'
 
-
-type PhotoContent = {
-    photo_id: number;
-    name: string;
-    photo_url_category_relation: {
-        photo_category: {
-            category: string;
-        };
-    }[];
-}
-
 type PhotoCategory = {
     id: number;
     created_at: string;
     category: string;
 }
-
-type PhotoTable = PostgrestSingleResponse<PhotoContent[]>
 
 type CategoryTable = PostgrestSingleResponse<PhotoCategory[]>
 
@@ -34,30 +21,18 @@ function getSupabaseClient() {
 
 export async function fetchPhotos(): Promise<photo.Photos> {
 
-    const supabase = getSupabaseClient();
-
-    const table_data: PhotoTable = await supabase
-        .from('photo_name')
-        .select(`
-            photo_id:id,
-            name,
-            photo_url_category_relation!inner(
-              photo_category(
-                category
-              )
-            )
-        `)
-
-    if (table_data.error) {
-        console.error('Error fetching images:', table_data.error);
+    const response = await fetch(process.env.API_ROOT_URL + '/api/photos', {
+        method: 'GET',
+        headers: {
+            'Authorization': 'Bearer ' + process.env.API_TOKEN,
+        }
+    });
+    if (!response.ok) {
+        console.error('Error fetching images:', response.status, response.statusText);
         return [];
     }
-    return table_data.data?.map((data: PhotoContent) => {
-        const publicUrl: photo.Url = process.env.SUPABASE_URL + '/' + process.env.SUPABASE_PHOTO_DIRECTORY + '/' + data.name;
-        const categories: photo.Categories = data.photo_url_category_relation.map(category => category.photo_category.category);
 
-        return { publicUrl, categories };
-    }) || [];
+    return await response.json();
 }
 
 export async function fetchCategories(): Promise<photo.Categories> {
