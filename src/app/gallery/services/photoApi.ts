@@ -1,5 +1,6 @@
 import {createClient, PostgrestSingleResponse} from '@supabase/supabase-js';
 import * as photo from '../types/photo'
+import { PhotoData, PhotoDataResponse } from "@/app/api/photos/route";
 
 type PhotoCategory = {
     id: number;
@@ -32,7 +33,14 @@ export async function fetchPhotos(): Promise<photo.Photos> {
         return [];
     }
 
-    return await response.json();
+    const photoDatas: PhotoDataResponse = await response.json();
+
+    return photoDatas.map((_data: PhotoData) => {
+        return {
+            publicUrl: _data.publicUrl,
+            categories: _data.categories
+        }
+    });
 }
 
 export async function fetchCategories(): Promise<photo.Categories> {
